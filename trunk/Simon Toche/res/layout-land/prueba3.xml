@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp" >
+
+             <ImageView
+                 android:id="@+id/item5"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+                 android:layout_marginLeft="30dp"
+                 android:layout_alignParentTop="true"
+                 android:adjustViewBounds="true"
+                 android:src="@drawable/emoticon_party" />
+
+             <ImageView
+                 android:id="@+id/item1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toRightOf="@id/item5"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+                 android:adjustViewBounds="true"
+                 android:src="@drawable/emoticon_party" />
+
+             <ImageView
+                 android:id="@+id/item2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentTop="true"
+                 android:layout_toRightOf="@id/item1"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+                 android:adjustViewBounds="true"
+                 android:src="@drawable/emoticon_party" />
+
+             <ImageView
+                 android:id="@+id/item6"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentTop="true"
+                 android:layout_toRightOf="@id/item2"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+                 android:adjustViewBounds="true"
+                 android:src="@drawable/emoticon_party" />
+             
+        <ImageView
+            android:id="@+id/item7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/item5"
+            android:adjustViewBounds="true"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+            android:src="@drawable/emoticon_party" />
+        
+        <ImageView
+        android:id="@+id/item3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/item1"
+                 android:layout_toRightOf="@id/item7"
+        android:adjustViewBounds="true"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+        android:src="@drawable/emoticon_party" />
+        
+        <ImageView
+        android:id="@+id/item4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item2"
+            android:layout_alignParentBottom="true"
+                 android:layout_toRightOf="@id/item3"
+        android:adjustViewBounds="true"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+        android:src="@drawable/emoticon_party" />
+        
+        <ImageView
+            android:id="@+id/item8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/item6"
+                 android:layout_toRightOf="@id/item4"
+            android:adjustViewBounds="true"
+                 android:maxWidth="50dp"
+                 android:maxHeight="50dp"
+            android:src="@drawable/emoticon_party" />
+
+</RelativeLayout>
