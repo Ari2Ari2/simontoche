@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/prueba"
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    
+    >
+    
+<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="30dp"
     android:orientation="horizontal" 
@@ -21,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_weight=".15"
         android:adjustViewBounds="true"
-        android:src="@drawable/emoticon_party" />
+        android:src="@drawable/emoticon_party"/>
 
     <ImageView
         android:id="@+id/bar1"
@@ -56,10 +64,12 @@
     
     </LinearLayout>
     
-    <Space
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight=".20" />
+        android:layout_weight=".20" 
+        android:src="@drawable/down_arrow"
+        android:adjustViewBounds="true" android:layout_gravity="top"/>
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
@@ -110,4 +120,32 @@
     
     </LinearLayout>
 
+</LinearLayout>
+
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	      android:layout_height="60dp"      
+	      android:layout_gravity="center"
+	       android:background="@android:color/white"
+	      android:id="@+id/time_menu">
+
+		<ImageView
+		    android:id="@+id/imageView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/emoticon_party" android:adjustViewBounds="true"/>
+
+		<ImageView
+		    android:id="@+id/imageView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/emoticon_party" android:adjustViewBounds="true"/>
+
+		<ImageButton
+		    android:id="@+id/imageButton1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/emoticon_party" android:adjustViewBounds="true" android:scaleType="fitXY"/>
+	    
+	</LinearLayout>
 </LinearLayout>
