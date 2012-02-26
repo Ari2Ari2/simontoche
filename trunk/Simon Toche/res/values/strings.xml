@@ -5,5 +5,5 @@
     <string name="app_name">Simon Toche</string>
     <string name="title_close"> Salir de Simon Toche </string>    
     <string name="image_button"> Boton de imagen </string>
-    <string name="new_game"> Boton de imagen </string>
+    <string name="new_game"> Boton de nuevo juego </string>
 </resources>
