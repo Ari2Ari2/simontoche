@@ -6,10 +6,19 @@
 
 package simonToche.android;
 
-import android.app.Activity;
-import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.List;
 
-public class SelectActivity extends Activity {
+import simonToche.logic.Activity;
+import simonToche.logic.Category;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView.ScaleType;
+
+public class SelectActivity extends android.app.Activity {
+	
+	private static Category category;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -18,6 +27,29 @@ public class SelectActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.select_activity_view);
+		View v = findViewById(R.id.time_menu);
+		v.setVisibility(View.INVISIBLE);
+		v = findViewById(R.id.middle_button);
+		// Cambiar a boton subiendo
+		
+		category = new Category();
+		category.setName("fun");
+		Activity a = new Activity();
+		a.setButton("biblioteca");
+		Activity b = new Activity();
+		b.setButton("disco");
+		List<Activity> l = new ArrayList<Activity>();
+		l.add(a);
+		l.add(a);
+		l.add(a);
+		l.add(a);
+		l.add(b);
+		l.add(b);
+		l.add(b);
+		l.add(b);
+		category.setActivities(l);
+		this.setActivitiesButton();
 	}
 	
 	/* (non-Javadoc)
@@ -78,6 +110,47 @@ public class SelectActivity extends Activity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
+	}
+
+	/**
+	 * 
+	 */
+	private void setActivitiesButton(){
+		List<Activity> activities = category.getActivities();
+		ImageButton v;
+		int borderId = getResources().getIdentifier(
+				category.getName() + "_circle", 
+				"drawable", 
+				getPackageName());
+		int numActivities = 8;
+		int index = 1;
+		for(Activity a: activities){
+			int resID = getResources().getIdentifier(
+					a.getButton(), 
+					"drawable", 
+					getPackageName());
+			System.out.println("Intentando obtener res: " +"button" + index);
+			v = (ImageButton) findViewById(
+					getResources().getIdentifier(
+					"button" + index, 
+					"id", 
+					getPackageName()));
+			v.setBackgroundResource(resID);
+			v.setImageResource(borderId);
+			v.setVisibility(View.VISIBLE);
+			v.setScaleType(ScaleType.FIT_XY);
+			++index;
+		}
+		while(index <= numActivities){
+			System.out.println("Obteniendo boton: " + index);
+			v = (ImageButton) findViewById(getResources().getIdentifier(
+					"button" + index, 
+					"id", 
+					getPackageName()));
+			v.setBackgroundColor(View.INVISIBLE);
+			v.setVisibility(View.INVISIBLE);
+			++index;
+		}		
 	}
 	
 }

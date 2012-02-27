@@ -25,10 +25,17 @@
 
 package simonToche.android;
 
+import java.util.List;
+
+import simonToche.logic.Category;
+import simonToche.logic.Game;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 public class PlayingActivity extends Activity {
+	
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -98,5 +105,16 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
+	
+	private void setBackground(){
+		View v = findViewById(R.id.playing_view);
+		int resID = getResources().getIdentifier(
+				Game.getPlace().getBackground(), 
+				"drawable", 
+				getPackageName());
+		v.setBackgroundResource(resID);
+	}
+	
+	
 	
 }
