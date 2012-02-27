@@ -14,8 +14,12 @@
 
 package simonToche.android;
 
+import simonToche.logic.Game;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainMenuActivity extends Activity {
@@ -29,9 +33,6 @@ public class MainMenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		tv = new TextView(this);
-		tv.setText("En MainMenuActivity");
-		setContentView(tv);
 	}
 	
 	/* (non-Javadoc)
