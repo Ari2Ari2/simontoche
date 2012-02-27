@@ -22,7 +22,7 @@
     android:weightSum="1.0"
     android:orientation="horizontal" 
     >
-
+    
     <ImageView
         android:id="@+id/emoticon1"
         android:layout_width="wrap_content"
