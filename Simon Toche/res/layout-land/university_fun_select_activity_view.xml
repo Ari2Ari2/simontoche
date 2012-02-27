@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        
         android:weightSum="2" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="50dp">
 
         <LinearLayout
@@ -25,7 +24,41 @@
             android:paddingRight="40dp"
             android:weightSum="4" >
 
-            
+            <ImageButton
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/piscina"/>
+
+            <ImageButton
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/truco"/>
+
+            <ImageButton
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/domino"/>
+
+            <ImageButton
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" android:visibility="visible" android:src="@drawable/fun_circle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -37,22 +70,22 @@
             android:weightSum="5" >
 
             <ImageButton
-                android:id="@+id/button7"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/people_drinking"/>
 
             <ImageButton
-                android:id="@+id/button3"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:src="@drawable/fun_circle"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -62,22 +95,22 @@
                 android:visibility="invisible" />
 
             <ImageButton
-                android:id="@+id/button4"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/videogames"/>
 
             <ImageButton
-                android:id="@+id/button8"
+                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
     
