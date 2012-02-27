@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         
-    <include layout="@layout/status_bar" />
-    
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -52,7 +46,7 @@
                 android:layout_gravity="bottom|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:background="@drawable/food" android:src="@drawable/eat_circle"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -68,7 +62,7 @@
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:background="@drawable/studying" android:src="@drawable/study_circle"/>
 
             <ImageButton
                 android:id="@+id/button8"
@@ -77,8 +71,6 @@
                 android:layout_gravity="top|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" android:background="@drawable/sleeping" android:src="@drawable/sleep_circle"/>
         </LinearLayout>
     </LinearLayout>
-    
-</RelativeLayout>

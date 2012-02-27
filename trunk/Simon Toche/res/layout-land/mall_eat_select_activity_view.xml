@@ -31,7 +31,7 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/arabe"/>
 
             <ImageButton
                 
@@ -49,7 +49,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/salad"/>
 
             <ImageButton
                 
@@ -58,7 +58,7 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:visibility="visible" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:visibility="visible" android:src="@drawable/eat_circle" android:background="@drawable/chinesse"/>
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +76,7 @@
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/pavo"/>
 
             <ImageButton
                 
@@ -101,7 +101,7 @@
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/costilla"/>
 
             <ImageButton
                 
@@ -110,7 +110,7 @@
                 android:layout_gravity="top|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/pescado"/>
         </LinearLayout>
     </LinearLayout>
     
