@@ -24,11 +24,10 @@
     >
     
     <ImageView
-        android:id="@+id/emoticon1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight=".15"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/fun_emoticon"/>
 
     <ImageView
         android:id="@+id/bar1"
@@ -36,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_weight=".30"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" />
+        android:scaleType="centerInside" android:src="@drawable/fun_bar" android:paddingBottom="2dp"/>
     
     <Space 
         android:layout_width="wrap_content"
@@ -44,11 +43,10 @@
         android:layout_weight=".1"/>
     
     <ImageView
-        android:id="@+id/emoticon2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight=".15"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/eat_emoticon"/>
 
     <ImageView
         android:id="@+id/bar2"
@@ -66,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_weight=".20" 
         android:adjustViewBounds="true" 
-        android:layout_gravity="top"/>
+        android:layout_gravity="top|center"/>
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
@@ -77,11 +75,10 @@
     >
     
     <ImageView
-        android:id="@+id/emoticon3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight=".15"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true" android:src="@drawable/study_emoticon" android:scaleType="fitCenter"/>
 
     <ImageView
         android:id="@+id/bar3"
@@ -97,11 +94,10 @@
         android:layout_weight=".1"/>
     
     <ImageView
-        android:id="@+id/emoticon4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight=".15"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/sleep_emoticon"/>
 
     <ImageView
         android:id="@+id/bar4"
