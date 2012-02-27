@@ -31,7 +31,7 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/subway"/>
 
             <ImageButton
                 
@@ -40,7 +40,7 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/comedor"/>
 
             <ImageButton
                 
@@ -101,7 +101,7 @@
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
                 android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/amper"/>
 
             <ImageButton
                 
