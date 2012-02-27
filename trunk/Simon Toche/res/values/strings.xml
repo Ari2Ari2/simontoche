@@ -3,7 +3,13 @@
 
     <string name="hello">Hello World, SimonTocheActivity!</string>
     <string name="app_name">Simon Toche</string>
-    <string name="title_close"> Salir de Simon Toche </string>    
+    <string name="title_close"> Salir de Simon Toche </string>
     <string name="image_button"> Boton de imagen </string>
     <string name="new_game"> Boton de nuevo juego </string>
+    <string name="moving_activity"> Moviendose </string>
+    <string name="move_activity"> Moverse </string>
+    <string name="playing_activity"> Jugando Tamagotchi </string>
+    <string name="select_activity"> Seleccionar opciones </string>
+    <string name="continue_game">Continuar Juego</string>
+
 </resources>
