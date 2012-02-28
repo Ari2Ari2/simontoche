@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:background="@drawable/place_usb">
-        
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/place_usb" >
+
     <include layout="@layout/status_bar" />
-    
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
-        android:weightSum="2" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="50dp">
+        android:weightSum="2" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,40 +28,51 @@
             android:weightSum="4" >
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/subway"/>
+                android:background="@drawable/subway"
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="subway" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/comedor"/>
+                android:background="@drawable/comedor"
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="comedor" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="amper" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:visibility="visible" android:src="@drawable/eat_circle"/>
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="amper"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,22 +84,24 @@
             android:weightSum="5" >
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:visibility="invisible"/>
+                android:scaleType="fitXY"
+                android:visibility="invisible" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|left"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/eat_circle"/>
+                android:adjustViewBounds="true"
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="amper" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -95,23 +111,26 @@
                 android:visibility="invisible" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/eat_circle" android:background="@drawable/amper"/>
+                android:adjustViewBounds="true"
+                android:background="@drawable/amper"
+                android:onClick="elegirComer"
+                android:scaleType="fitXY"
+                android:src="@drawable/eat_circle"
+                android:tag="amper" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|right"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:visibility="invisible"/>
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
-    
+
 </RelativeLayout>

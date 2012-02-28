@@ -12,20 +12,27 @@
 package simonToche.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MoveActivity extends Activity {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(simonToche.android.R.layout.mapa);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStart()
 	 */
 	@Override
@@ -33,8 +40,10 @@ public class MoveActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onResume()
 	 */
 	@Override
@@ -43,8 +52,9 @@ public class MoveActivity extends Activity {
 		super.onResume();
 	}
 
-	/* Va a onResume() si el usuario regresa a la actividad
-	 * o a onStop() si la actividad deja de ser visible
+	/*
+	 * Va a onResume() si el usuario regresa a la actividad o a onStop() si la
+	 * actividad deja de ser visible
 	 * 
 	 * @see android.app.Activity#onPause()
 	 */
@@ -53,10 +63,10 @@ public class MoveActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
-	
-	/* Va a onRestart() si el usuario navega hasta
-	 * la actividad o a onDestroy() si la actividad
-	 * va a terminar
+
+	/*
+	 * Va a onRestart() si el usuario navega hasta la actividad o a onDestroy()
+	 * si la actividad va a terminar
 	 * 
 	 * @see android.app.Activity#onStop()
 	 */
@@ -65,8 +75,10 @@ public class MoveActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
@@ -75,7 +87,8 @@ public class MoveActivity extends Activity {
 		super.onDestroy();
 	}
 
-	/* Viene de onStop() y va a onStart()
+	/*
+	 * Viene de onStop() y va a onStart()
 	 * 
 	 * @see android.app.Activity#onRestart()
 	 */
@@ -84,5 +97,13 @@ public class MoveActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
-	
+
+	public void elegirLugar(View v) {
+		String tag = (String) v.getTag();
+		Intent i = new Intent(MoveActivity.this, MovingActivity.class);
+		i.putExtra("tag", tag);
+		startActivity(i);
+		this.finish();
+	}
+
 }

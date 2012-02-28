@@ -1,75 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
-        
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="50dp"
+    android:orientation="vertical"
+    android:weightSum="2" >
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        
-        android:weightSum="2" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="50dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:baselineAligned="false"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:weightSum="2" >
-            
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:weightSum="5" >
-
-            <ImageButton
-                android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|left"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|left"
-                android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:background="@drawable/food" android:src="@drawable/eat_circle"/>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:visibility="invisible" />
-
-            <ImageButton
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:background="@drawable/studying" android:src="@drawable/study_circle"/>
-
-            <ImageButton
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|right"
-                android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:background="@drawable/sleeping" android:src="@drawable/sleep_circle"/>
-        </LinearLayout>
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:weightSum="2" >
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:onClick="elegirAccion"
+        android:orientation="horizontal"
+ 		android:tag="fun"
+        android:weightSum="5" >
+
+        <ImageButton
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/food"
+            android:onClick="elegirAccion"
+            android:scaleType="fitXY"
+            android:src="@drawable/eat_circle"
+            android:tag="food" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/studying"
+            android:onClick="elegirAccion"
+            android:scaleType="fitXY"
+            android:src="@drawable/study_circle"
+            android:tag="studying" />
+
+        <ImageButton
+            android:id="@+id/button8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/sleeping"
+            android:onClick="elegirAccion"
+            android:scaleType="fitXY"
+            android:src="@drawable/sleep_circle"
+            android:tag="sleeping" />
+    </LinearLayout>
+
+</LinearLayout>

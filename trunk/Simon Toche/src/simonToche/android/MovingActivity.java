@@ -7,6 +7,7 @@
 package simonToche.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MovingActivity extends Activity {
@@ -18,6 +19,16 @@ public class MovingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.moving_activity_view);
+		Bundle bundle = getIntent().getExtras();
+		String tag = "";
+		if(bundle != null){
+			tag = bundle.getString("tag");
+		}
+		Intent i = new Intent(MovingActivity.this, PlayingActivity.class);
+		i.putExtra("tag", tag);
+		startActivity(i);
+		this.finish();
 	}
 	
 	/* (non-Javadoc)
