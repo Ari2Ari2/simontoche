@@ -31,6 +31,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class PlayingActivity extends Activity {
 
@@ -145,6 +146,18 @@ public class PlayingActivity extends Activity {
 		String tag = (String) v.getTag();
 		i.putExtra("tag", tag);
 		startActivity(i);
+	}
+	
+	public void toggleTimeMapBar(View v){
+		View bar = findViewById(R.id.time_map_bar);
+		ImageButton button = (ImageButton)v;
+		if(bar.getVisibility() == View.INVISIBLE){
+			bar.setVisibility(View.VISIBLE);
+			button.setImageResource(R.drawable.up_arrow);
+		}else{
+			bar.setVisibility(View.INVISIBLE);
+			button.setImageResource(R.drawable.down_arrow);
+		}
 	}
 
 }
