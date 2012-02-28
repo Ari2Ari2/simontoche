@@ -159,5 +159,12 @@ public class PlayingActivity extends Activity {
 			button.setImageResource(R.drawable.down_arrow);
 		}
 	}
+	
+	public void goToMap(View v){
+		Intent i = new Intent(PlayingActivity.this, MoveActivity.class);
+		i.putExtra("place", "");
+		startActivity(i);
+		finish();
+	}
 
 }
