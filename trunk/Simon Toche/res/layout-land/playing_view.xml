@@ -36,9 +36,11 @@
             android:layout_gravity="top|left"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="@drawable/fun"
             android:onClick="elegirAccion"
             android:scaleType="fitXY"
-            android:tag="fun" android:background="@drawable/fun" android:src="@drawable/fun_circle"/>
+            android:src="@drawable/fun_circle"
+            android:tag="fun" />
 
         <ImageButton
             android:id="@+id/button3"
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:visibility="invisible" />
+            android:src="@drawable/smiley" />
 
         <ImageButton
             android:id="@+id/button4"

@@ -90,11 +90,10 @@
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="@drawable/pavo"
                 android:onClick="elegirComer"
                 android:scaleType="fitXY"
                 android:src="@drawable/eat_circle"
-                android:tag="pavo" />
+                android:tag="pavo" android:background="@drawable/pavo"/>
 
             <ImageButton
                 android:layout_width="match_parent"
