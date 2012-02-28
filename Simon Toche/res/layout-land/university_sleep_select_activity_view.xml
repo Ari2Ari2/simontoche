@@ -45,7 +45,7 @@
                 android:onClick="elegirDormir"
                 android:scaleType="fitXY"
                 android:src="@drawable/sleep_circle"
-                android:tag="ojoFalta" />
+                android:tag="ojoFalta" android:background="@drawable/bosque"/>
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                 android:onClick="elegirDormir"
                 android:scaleType="fitXY"
                 android:src="@drawable/sleep_circle"
-                android:tag="ojoFalta" />
+                android:tag="ojoFalta" android:background="@drawable/pupitre"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                 android:onClick="elegirDormir"
                 android:scaleType="fitXY"
                 android:src="@drawable/sleep_circle"
-                android:tag="ojoFalta" />
+                android:tag="ojoFalta" android:background="@drawable/sala_de_lectura"/>
 
             <ImageButton
                 android:layout_width="match_parent"
