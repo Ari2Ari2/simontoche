@@ -100,6 +100,11 @@ public class MainMenuActivity extends Activity {
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
 		this.startActivity(in);
 	}
+	
+	public void continuar(View v){
+		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
+		this.startActivity(in);
+	}
 
 
 }

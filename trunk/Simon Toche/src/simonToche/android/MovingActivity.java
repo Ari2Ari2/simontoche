@@ -6,12 +6,19 @@
  */
 package simonToche.android;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MovingActivity extends Activity {
 
+	Intent intent;
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -19,18 +26,29 @@ public class MovingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.moving_activity_view);
+		
 		Bundle bundle = getIntent().getExtras();
 		String tag = "";
 		if(bundle != null){
 			tag = bundle.getString("tag");
 		}
-		Intent i = new Intent(MovingActivity.this, PlayingActivity.class);
-		i.putExtra("tag", tag);
-		startActivity(i);
-		this.finish();
+		intent = new Intent(MovingActivity.this, PlayingActivity.class);
+		intent.putExtra("tag", tag);
+		startActivity(intent);
+		finish();
+		
 	}
 	
+	private void waitAWhile() {
+		try {
+			Thread.sleep(8000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onStart()
 	 */
@@ -38,6 +56,7 @@ public class MovingActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+		setContentView(R.layout.moving_activity_view);
 	}
 	
 	/* (non-Javadoc)
@@ -89,6 +108,13 @@ public class MovingActivity extends Activity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
+	}
+	
+	public void goToMap(View v){
+		Intent i = new Intent(MovingActivity.this, MoveActivity.class);
+		i.putExtra("place", "");
+		startActivity(i);
+		finish();
 	}
 	
 }
