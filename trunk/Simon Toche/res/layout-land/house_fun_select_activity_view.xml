@@ -33,10 +33,11 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:background="@drawable/family"
                 android:onClick="elegirDiversion"
                 android:scaleType="fitXY"
-                android:tag="family"
-                android:src="@drawable/fun_circle" />
+                android:src="@drawable/fun_circle"
+                android:tag="family" />
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -45,8 +46,10 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@drawable/tv"
+                android:onClick="elegirDiversion"
                 android:scaleType="fitXY"
-                android:src="@drawable/fun_circle" />
+                android:src="@drawable/fun_circle"
+                android:tag="tv" />
 
             <ImageButton
                 android:layout_width="match_parent"

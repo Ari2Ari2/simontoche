@@ -89,7 +89,9 @@
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="elegirComer"
                 android:scaleType="fitXY"
+                android:tag="tag1"
                 android:visibility="invisible" />
 
             <ImageButton

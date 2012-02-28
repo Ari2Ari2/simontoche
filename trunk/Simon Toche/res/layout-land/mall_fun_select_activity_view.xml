@@ -68,9 +68,11 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="elegirDiversion"
                 android:scaleType="fitXY"
                 android:src="@drawable/fun_circle"
-                android:visibility="visible" />
+                android:tag="funfun"
+                android:visibility="visible" android:background="@drawable/museo"/>
         </LinearLayout>
 
         <LinearLayout
@@ -134,5 +136,5 @@
                 android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
-    
+
 </RelativeLayout>

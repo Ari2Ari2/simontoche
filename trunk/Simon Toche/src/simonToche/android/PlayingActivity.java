@@ -26,12 +26,15 @@
 package simonToche.android;
 
 import simonToche.logic.Game;
+import simonToche.logic.Place;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 public class PlayingActivity extends Activity {
+
+	private Place place;
 
 	/*
 	 * (non-Javadoc)
@@ -47,14 +50,17 @@ public class PlayingActivity extends Activity {
 		if (params != null) {
 			tag = params.getString("tag");
 		}
+		this.place = new Place();
 		if (tag.equalsIgnoreCase("home")) {
 			setContentView(R.layout.house_playing_view);
+			place.setBackground("home");
 		} else if (tag.equalsIgnoreCase("mall")) {
 			setContentView(R.layout.mall_playing_view);
+			place.setBackground("mall");
 		} else if (tag.equalsIgnoreCase("university")) {
 			setContentView(R.layout.university_playing_view);
+			place.setBackground("university");
 		}
-
 	}
 
 	/*
@@ -125,6 +131,7 @@ public class PlayingActivity extends Activity {
 		super.onRestart();
 	}
 
+	@SuppressWarnings("unused")
 	private void setBackground() {
 		View v = findViewById(R.layout.playing_view);
 		int resID = getResources().getIdentifier(
@@ -132,12 +139,12 @@ public class PlayingActivity extends Activity {
 		v.setBackgroundResource(resID);
 	}
 
-	private void elegirAccion(View v){
-		String tag = (String) v.getTag();
+	public void elegirAccion(View v) {
 		Intent i = new Intent(PlayingActivity.this, SelectActivity.class);
+		i.putExtra("Place", this.place);
+		String tag = (String) v.getTag();
 		i.putExtra("tag", tag);
 		startActivity(i);
-		this.finish();
 	}
 
 }
