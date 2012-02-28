@@ -72,7 +72,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/eat_circle"
                 android:tag="amper"
-                android:visibility="visible" android:background="@drawable/comedorProf"/>
+                android:visibility="visible" android:background="@drawable/comedor_profesores"/>
         </LinearLayout>
 
         <LinearLayout

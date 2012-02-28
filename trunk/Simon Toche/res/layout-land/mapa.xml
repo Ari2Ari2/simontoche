@@ -1,127 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="3" >
+    android:layout_height="match_parent" android:background="@drawable/map_background">
 
-    <TableRow
-        android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:weightSum="3" >
+   
 
         <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:adjustViewBounds="true"
             android:onClick="elegirLugar"
-            android:scaleType="fitXY"
+            android:scaleType="centerInside"
             android:tag="university"
-            android:text="USB" 
-            android:visibility="invisible"
-            android:background="@drawable/usb_map" android:src="@drawable/usb_map">
+            android:src="@drawable/university_icon" 
+            android:layout_marginBottom="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp" 
+            android:background="@android:color/transparent" >
         </ImageButton>
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="elegirLugar"
-            android:scaleType="fitXY"
-            android:tag="university"
-            android:text="USB" android:background="@drawable/usb_map" android:src="@drawable/usb_map" android:layout_marginBottom="100dp">
-        </ImageButton>
 
         <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="elegirLugar"
-            android:scaleType="fitXY"
-            android:tag="university"
-            android:text="USB" 
-            android:background="@drawable/usb_map" 
-            android:src="@drawable/usb_map"
-            android:visibility="invisible">
-        </ImageButton>
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        android:layout_weight="1" 
-        android:weightSum="3">
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="elegirLugar"
-            android:scaleType="fitXY"
-            android:tag="university"
-            android:text="USB" 
-            android:visibility="invisible"
-            android:background="@drawable/usb_map" android:src="@drawable/usb_map">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="elegirLugar"
-            android:scaleType="fitXY"
-            android:tag="university"
-            android:text="USB" 
-            android:visibility="invisible"
-            android:background="@drawable/usb_map" android:src="@drawable/usb_map">
-        </ImageButton>
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:onClick="elegirLugar"
-            android:scaleType="fitXY"
-            android:tag="university"
-            android:text="USB" 
-            android:visibility="invisible"
-            android:background="@drawable/usb_map" android:src="@drawable/usb_map">
-        </ImageButton>
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:weightSum="3" >
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:onClick="elegirLugar"
             android:tag="home"
-            android:text="Casa" android:layout_weight="1" android:background="@drawable/house" android:src="@drawable/house" android:scaleType="fitXY">
+            android:background="@android:color/transparent" 
+            android:src="@drawable/house_icon" 
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            
+            >
         </ImageButton>
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible" android:layout_weight="1" android:src="@drawable/house">
-        </ImageButton>
 
         <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:onClick="elegirLugar"
             android:tag="mall"
-            android:text="Mall" android:layout_weight="1" android:scaleType="fitXY" android:src="@drawable/house" android:soundEffectsEnabled="true" android:background="@drawable/house">
+            android:scaleType="fitXY" 
+            android:src="@drawable/mall_icon" 
+            android:soundEffectsEnabled="true" 
+            android:background="@drawable/house"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            >
         </ImageButton>
-    </TableRow>
-
-</TableLayout>
+</RelativeLayout>
