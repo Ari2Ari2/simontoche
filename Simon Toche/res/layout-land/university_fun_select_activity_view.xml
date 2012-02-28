@@ -73,7 +73,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/fun_circle"
                 android:tag="tag1"
-                android:visibility="visible" />
+                android:visibility="visible" android:background="@drawable/jardines"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +105,7 @@
                 android:onClick="elegirDiversion"
                 android:scaleType="fitXY"
                 android:src="@drawable/fun_circle"
-                android:tag="people_drinking" />
+                android:tag="people_drinking" android:background="@drawable/futbol"/>
 
             <ImageView
                 android:layout_width="match_parent"
