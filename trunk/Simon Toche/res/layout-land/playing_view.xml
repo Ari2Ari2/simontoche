@@ -38,7 +38,7 @@
             android:adjustViewBounds="true"
             android:onClick="elegirAccion"
             android:scaleType="fitXY"
-            android:tag="fun" />
+            android:tag="fun" android:background="@drawable/fun" android:src="@drawable/fun_circle"/>
 
         <ImageButton
             android:id="@+id/button3"
