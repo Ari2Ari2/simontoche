@@ -6,7 +6,6 @@
 
 package simonToche.android;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import simonToche.logic.Activity;
@@ -17,42 +16,49 @@ import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 
 public class SelectActivity extends android.app.Activity {
-	
+
 	private static Category category;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.select_activity_view);
-		View v = findViewById(R.id.time_menu);
-		v.setVisibility(View.INVISIBLE);
-		v = findViewById(R.id.middle_button);
-		// Cambiar a boton subiendo
-		
-		category = new Category();
-		category.setName("fun");
-		Activity a = new Activity();
-		a.setButton("biblioteca");
-		Activity b = new Activity();
-		b.setButton("disco");
-		List<Activity> l = new ArrayList<Activity>();
-		l.add(a);
-		l.add(a);
-		l.add(a);
-		l.add(a);
-		l.add(b);
-		l.add(b);
-		l.add(b);
-		l.add(b);
-		category.setActivities(l);
-		this.setActivitiesButton();
+		Bundle params = getIntent().getExtras();
+		String tag = params.getString("tag");
+		setContentView(R.layout.moving_activity_view);
+		// setContentView(R.layout.select_activity_view);
+		// View v = findViewById(R.id.time_menu);
+		// v.setVisibility(View.INVISIBLE);
+		// v = findViewById(R.id.middle_button);
+		// // Cambiar a boton subiendo
+		//
+		// category = new Category();
+		// category.setName("fun");
+		// Activity a = new Activity();
+		// a.setButton("biblioteca");
+		// Activity b = new Activity();
+		// b.setButton("disco");
+		// List<Activity> l = new ArrayList<Activity>();
+		// l.add(a);
+		// l.add(a);
+		// l.add(a);
+		// l.add(a);
+		// l.add(b);
+		// l.add(b);
+		// l.add(b);
+		// l.add(b);
+		// category.setActivities(l);
+		// this.setActivitiesButton();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStart()
 	 */
 	@Override
@@ -60,8 +66,10 @@ public class SelectActivity extends android.app.Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onResume()
 	 */
 	@Override
@@ -70,8 +78,9 @@ public class SelectActivity extends android.app.Activity {
 		super.onResume();
 	}
 
-	/* Va a onResume() si el usuario regresa a la actividad
-	 * o a onStop() si la actividad deja de ser visible
+	/*
+	 * Va a onResume() si el usuario regresa a la actividad o a onStop() si la
+	 * actividad deja de ser visible
 	 * 
 	 * @see android.app.Activity#onPause()
 	 */
@@ -80,10 +89,10 @@ public class SelectActivity extends android.app.Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
-	
-	/* Va a onRestart() si el usuario navega hasta
-	 * la actividad o a onDestroy() si la actividad
-	 * va a terminar
+
+	/*
+	 * Va a onRestart() si el usuario navega hasta la actividad o a onDestroy()
+	 * si la actividad va a terminar
 	 * 
 	 * @see android.app.Activity#onStop()
 	 */
@@ -92,8 +101,10 @@ public class SelectActivity extends android.app.Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
@@ -102,7 +113,8 @@ public class SelectActivity extends android.app.Activity {
 		super.onDestroy();
 	}
 
-	/* Viene de onStop() y va a onStart()
+	/*
+	 * Viene de onStop() y va a onStart()
 	 * 
 	 * @see android.app.Activity#onRestart()
 	 */
@@ -115,42 +127,52 @@ public class SelectActivity extends android.app.Activity {
 	/**
 	 * 
 	 */
-	private void setActivitiesButton(){
+	private void setActivitiesButton() {
 		List<Activity> activities = category.getActivities();
 		ImageButton v;
 		int borderId = getResources().getIdentifier(
-				category.getName() + "_circle", 
-				"drawable", 
-				getPackageName());
+				category.getName() + "_circle", "drawable", getPackageName());
 		int numActivities = 8;
 		int index = 1;
-		for(Activity a: activities){
-			int resID = getResources().getIdentifier(
-					a.getButton(), 
-					"drawable", 
+		for (Activity a : activities) {
+			int resID = getResources().getIdentifier(a.getButton(), "drawable",
 					getPackageName());
-			System.out.println("Intentando obtener res: " +"button" + index);
-			v = (ImageButton) findViewById(
-					getResources().getIdentifier(
-					"button" + index, 
-					"id", 
-					getPackageName()));
+			System.out.println("Intentando obtener res: " + "button" + index);
+			v = (ImageButton) findViewById(getResources().getIdentifier(
+					"button" + index, "id", getPackageName()));
 			v.setBackgroundResource(resID);
 			v.setImageResource(borderId);
 			v.setVisibility(View.VISIBLE);
 			v.setScaleType(ScaleType.FIT_XY);
 			++index;
 		}
-		while(index <= numActivities){
+		while (index <= numActivities) {
 			System.out.println("Obteniendo boton: " + index);
 			v = (ImageButton) findViewById(getResources().getIdentifier(
-					"button" + index, 
-					"id", 
-					getPackageName()));
+					"button" + index, "id", getPackageName()));
 			v.setBackgroundColor(View.INVISIBLE);
 			v.setVisibility(View.INVISIBLE);
 			++index;
-		}		
+		}
 	}
-	
+
+	public void elegirEstudiar(View v) {
+		String tag = (String) v.getTag();
+		this.finish();
+	}
+
+	public void elegirDormir(View v) {
+		String tag = (String) v.getTag();
+		this.finish();
+	}
+
+	public void elegirDiversion(View v) {
+		String tag = (String) v.getTag();
+		this.finish();
+	}
+
+	public void elegirComer(View v) {
+		String tag = (String) v.getTag();
+		this.finish();
+	}
 }

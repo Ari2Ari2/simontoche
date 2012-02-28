@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:background="@drawable/place_mall">
-        
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
     <include layout="@layout/status_bar" />
-    
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
-        android:weightSum="2" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:layout_marginTop="50dp">
+        android:weightSum="2" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,40 +27,50 @@
             android:weightSum="4" >
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/disco"/>
+                android:background="@drawable/disco"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="disco" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/cine"/>
+                android:background="@drawable/cine"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="cine" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/compras"/>
+                android:background="@drawable/compras"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="cine" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:visibility="visible" android:src="@drawable/fun_circle"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,22 +82,28 @@
             android:weightSum="5" >
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/parque_diversiones"/>
+                android:background="@drawable/parque_diversiones"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="parque_diversiones" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|left"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/bowling"/>
+                android:adjustViewBounds="true"
+                android:background="@drawable/bowling"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="bowling" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -95,22 +113,25 @@
                 android:visibility="invisible" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:src="@drawable/fun_circle" android:background="@drawable/maquinitas"/>
+                android:adjustViewBounds="true"
+                android:background="@drawable/maquinitas"
+                android:onClick="elegirDiversion"
+                android:scaleType="fitXY"
+                android:src="@drawable/fun_circle"
+                android:tag="maquinitas" />
 
             <ImageButton
-                
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|right"
                 android:layout_weight="1"
-                android:adjustViewBounds="true" 
-                android:scaleType="fitXY" android:visibility="invisible"/>
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
     

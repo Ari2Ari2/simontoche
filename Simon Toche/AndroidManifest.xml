@@ -25,7 +25,7 @@
             android:label="@string/move_activity"
             android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MOVE" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -35,7 +35,7 @@
             android:label="@string/moving_activity"
             android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MOVING" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -45,7 +45,7 @@
             android:label="@string/playing_activity"
             android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.PLAYING" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -55,8 +55,7 @@
             android:label="@string/select_activity"
             android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.SELECT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -25,29 +25,41 @@
 
 package simonToche.android;
 
-import java.util.List;
-
-import simonToche.logic.Category;
 import simonToche.logic.Game;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 
 public class PlayingActivity extends Activity {
-	
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+		Bundle params = getIntent().getExtras();
+		String tag = "";
+		if (params != null) {
+			tag = params.getString("tag");
+		}
+		if (tag.equalsIgnoreCase("home")) {
+			setContentView(R.layout.house_playing_view);
+		} else if (tag.equalsIgnoreCase("mall")) {
+			setContentView(R.layout.mall_playing_view);
+		} else if (tag.equalsIgnoreCase("university")) {
+			setContentView(R.layout.university_playing_view);
+		}
+
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStart()
 	 */
 	@Override
@@ -55,8 +67,10 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onResume()
 	 */
 	@Override
@@ -65,8 +79,9 @@ public class PlayingActivity extends Activity {
 		super.onResume();
 	}
 
-	/* Va a onResume() si el usuario regresa a la actividad
-	 * o a onStop() si la actividad deja de ser visible
+	/*
+	 * Va a onResume() si el usuario regresa a la actividad o a onStop() si la
+	 * actividad deja de ser visible
 	 * 
 	 * @see android.app.Activity#onPause()
 	 */
@@ -75,10 +90,10 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
-	
-	/* Va a onRestart() si el usuario navega hasta
-	 * la actividad o a onDestroy() si la actividad
-	 * va a terminar
+
+	/*
+	 * Va a onRestart() si el usuario navega hasta la actividad o a onDestroy()
+	 * si la actividad va a terminar
 	 * 
 	 * @see android.app.Activity#onStop()
 	 */
@@ -87,8 +102,10 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
@@ -97,7 +114,8 @@ public class PlayingActivity extends Activity {
 		super.onDestroy();
 	}
 
-	/* Viene de onStop() y va a onStart()
+	/*
+	 * Viene de onStop() y va a onStart()
 	 * 
 	 * @see android.app.Activity#onRestart()
 	 */
@@ -106,16 +124,20 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
-	
-	private void setBackground(){
-		View v = findViewById(R.id.playing_view);
+
+	private void setBackground() {
+		View v = findViewById(R.layout.playing_view);
 		int resID = getResources().getIdentifier(
-				Game.getPlace().getBackground(), 
-				"drawable", 
-				getPackageName());
+				Game.getPlace().getBackground(), "drawable", getPackageName());
 		v.setBackgroundResource(resID);
 	}
-	
-	
-	
+
+	private void elegirAccion(View v){
+		String tag = (String) v.getTag();
+		Intent i = new Intent(PlayingActivity.this, SelectActivity.class);
+		i.putExtra("tag", tag);
+		startActivity(i);
+		this.finish();
+	}
+
 }

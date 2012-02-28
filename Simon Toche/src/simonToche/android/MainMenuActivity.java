@@ -14,13 +14,10 @@
 
 package simonToche.android;
 
-import simonToche.logic.Game;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainMenuActivity extends Activity {
@@ -99,6 +96,10 @@ public class MainMenuActivity extends Activity {
 		super.onRestart();
 	}
 	
+	public void nuevoJuego(View v){
+		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
+		this.startActivity(in);
+	}
 
 
 }
