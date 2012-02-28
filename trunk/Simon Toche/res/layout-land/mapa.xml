@@ -1,15 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3" >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:layout_weight="1"
+        android:weightSum="3" >
+            <Button 
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_weight="1">
+                
+            </Button>
+            <Button 
+                android:layout_width="wrap_content"
+            android:layout_height="match_parent" 
+            android:layout_weight="1"
+            android:src="@drawable/house" android:scaleType="fitXY" android:adjustViewBounds="true" android:text="USB">
+                
+            </Button><Button 
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_weight="1">
+                
+            </Button>
+        </TableRow>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout1"
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:layout_weight="1">
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.24" >
-        </RelativeLayout>
+            android:layout_weight="1" >
+            
+            <Button 
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Casa">
+                
+            </Button>
+            <Button 
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+                
+            </Button>
+            <Button 
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Mall">
+                
+            </Button>
+        </TableRow>
 
-    </LinearLayout>
+    </TableLayout>
