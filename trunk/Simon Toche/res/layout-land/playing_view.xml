@@ -17,8 +17,7 @@
             android:orientation="horizontal"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
-            android:weightSum="4" >
-
+            android:weightSum="2" >
             
         </LinearLayout>
 
