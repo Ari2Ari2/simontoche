@@ -10,6 +10,7 @@ import java.util.List;
 
 import simonToche.logic.Activity;
 import simonToche.logic.Category;
+import simonToche.logic.Place;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -29,8 +30,19 @@ public class SelectActivity extends android.app.Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Bundle params = getIntent().getExtras();
-		String tag = params.getString("tag");
-		setContentView(R.layout.moving_activity_view);
+		Place p = (Place) getIntent().getSerializableExtra("Place");
+		String tagAccion = params.getString("tag");
+		String background = p.getBackground();
+		if (p.getBackground().equalsIgnoreCase("home")) {
+			this.contentHome(tagAccion);
+		}
+		if (p.getBackground().equalsIgnoreCase("mall")) {
+			this.contentMall(tagAccion);
+		}
+		if (p.getBackground().equalsIgnoreCase("university")) {
+			this.contentUniversity(tagAccion);
+		}
+
 		// setContentView(R.layout.select_activity_view);
 		// View v = findViewById(R.id.time_menu);
 		// v.setVisibility(View.INVISIBLE);
@@ -175,4 +187,53 @@ public class SelectActivity extends android.app.Activity {
 		String tag = (String) v.getTag();
 		this.finish();
 	}
+
+	private void contentUniversity(String tag) {
+		// TODO Auto-generated method stub
+		if (tag.equalsIgnoreCase("food")) {
+			setContentView(R.layout.university_eat_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("studying")) {
+			setContentView(R.layout.university_study_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("sleeping")) {
+			setContentView(R.layout.university_sleep_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("fun")) {
+			setContentView(R.layout.university_fun_select_activity_view);
+		}
+	}
+
+	private void contentMall(String tag) {
+		// TODO Auto-generated method stub
+		if (tag.equalsIgnoreCase("food")) {
+			setContentView(R.layout.mall_eat_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("studying")) {
+			setContentView(R.layout.mall_study_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("sleeping")) {
+			setContentView(R.layout.mall_sleep_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("fun")) {
+			setContentView(R.layout.mall_fun_select_activity_view);
+		}
+	}
+
+	private void contentHome(String tag) {
+		// TODO Auto-generated method stub
+		if (tag.equalsIgnoreCase("food")) {
+			setContentView(R.layout.house_eat_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("studying")) {
+			setContentView(R.layout.house_study_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("sleeping")) {
+			setContentView(R.layout.house_sleep_select_activity_view);
+		}
+		if (tag.equalsIgnoreCase("fun")) {
+			setContentView(R.layout.house_fun_select_activity_view);
+		}
+	}
+
 }

@@ -33,6 +33,8 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="elegirComer"
+                android:tag="cocina"
                 android:scaleType="fitXY"
                 android:visibility="invisible" />
 
@@ -93,6 +95,9 @@
                 android:layout_gravity="bottom|left"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="elegirComer"
+                android:background="@drawable/dulces"
+                android:tag="dulces"
                 android:scaleType="fitXY"
                 android:src="@drawable/eat_circle" />
 

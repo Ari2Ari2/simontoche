@@ -45,8 +45,10 @@
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="elegirComer"
                 android:scaleType="fitXY"
-                android:src="@drawable/eat_circle" />
+                android:src="@drawable/eat_circle"
+                android:tag="comer" android:background="@drawable/sushi"/>
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -101,7 +103,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/eat_circle" />
+                android:src="@drawable/eat_circle" android:background="@drawable/burger"/>
 
             <ImageView
                 android:layout_width="match_parent"
