@@ -313,7 +313,7 @@ public class Game {
 		Game.min += mins;
 		if((Game.min % 60) == 0){
 			Game.hour ++;
-			if((Game.hour % 60) == 0){
+			if((Game.hour % 24) == 0){
 				Game.day ++;
 				if((Game.day % 7) == 0){
 					Game.week++;
