@@ -304,12 +304,12 @@ public class Game {
 	}
 	
 	
-	public void actualizar(int mins){
+	public static void actualizar(int mins){
 		cambiarValoresNecesidad( mins);
 		cambiarValoresTiempo( mins);	
 	}
 
-	private void cambiarValoresTiempo(int mins) {
+	private static void cambiarValoresTiempo(int mins) {
 		Game.min += mins;
 		if((Game.min % 60) == 0){
 			Game.hour ++;
@@ -329,7 +329,7 @@ public class Game {
 	private static void gameOver() {
 	}
 
-	private void cambiarValoresNecesidad(int mins) {
+	private static void cambiarValoresNecesidad(int mins) {
 		Game.foodLevel +=  (Game.rateActualFood *  mins);
 		Game.funLevel += (Game.rateActualFun *  mins);
 		Game.sleepLevel += (Game.rateActualSleep *  mins);
