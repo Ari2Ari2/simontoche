@@ -25,23 +25,22 @@ public class Game {
 	private static int min = 1;
 	private static Place place;
 	private static List<Category> categories;
-	private static double rateDiaFood = -1;
-	private static double rateNocheFood = -1;
-	private static double rateAumentoFood = -1;
+	private static double rateDiaFood = -0.139;
+	private static double rateNocheFood = -0.092;
+	private static double rateAumentoFood = 1.6;
 	private static double rateActualFood = 0;
-	private static double rateDiaStudy = -1;
-	private static double rateNocheStudy = -1;
-	private static double rateAumentoStudy = -1;
+	private static double rateDiaStudy = -0.0347;
+	private static double rateNocheStudy = -0.0231;
+	private static double rateAumentoStudy = 0.27;
 	private static double rateActualStudy = 0;
-	private static double rateDiaSleep = -1;
-	private static double rateNocheSleep = -1;
-	private static double rateAumentoSleep = -1;
+	private static double rateDiaSleep = -0.104;
+	private static double rateNocheSleep = -0.27;
+	private static double rateAumentoSleep = 0.208;
 	private static double rateActualSleep = 0;
-	private static double rateDiaFun = -1;
-	private static double rateNocheFun = -1;
-	private static double rateAumentoFun = -1;
+	private static double rateDiaFun = -0.2777;
+	private static double rateNocheFun = -0.33333;
+	private static double rateAumentoFun = 0.83333;
 	private static double rateActualFun = 0;
-	protected static long duracion = 2000000000; // nano segundos
 
 	private static class Hilo extends Thread {
 		public String actividad;
@@ -268,11 +267,21 @@ public class Game {
 	}
 
 	private static void crearHilo(String string) {
+		resetearRates();
 		if (Game.hilo != null) {
-			Game.hilo.stop();
-			Game.hilo.destroy();
+//			Game.hilo.stop();
+//			Game.hilo.destroy();
 		}
 		Game.hilo = new Hilo(string);
+		Game.hilo.start();
+	}
+
+	private static void resetearRates() {
+		// TODO Auto-generated method stub
+		asignarRate("comer");
+		asignarRate("dormir");
+		asignarRate("entretenserse");
+		asignarRate("estudiar");
 	}
 
 	public static void comer() {
@@ -338,22 +347,19 @@ public class Game {
 			} else {
 				Game.rateActualSleep = Game.rateNocheSleep;
 			}
-		}
-		if (actividad.equalsIgnoreCase("comer")) {
+		}else if (actividad.equalsIgnoreCase("comer")) {
 			if (Game.esDia()) {
 				Game.rateActualFood = Game.rateDiaFood;
 			} else {
 				Game.rateActualFood = Game.rateNocheFood;
 			}
-		}
-		if (actividad.equalsIgnoreCase("estudiar")) {
+		}else if (actividad.equalsIgnoreCase("estudiar")) {
 			if (Game.esDia()) {
 				Game.rateActualStudy = Game.rateDiaStudy;
 			} else {
 				Game.rateActualStudy = Game.rateNocheStudy;
 			}
-		}
-		if (actividad.equalsIgnoreCase("entretenerse")) {
+		}else if (actividad.equalsIgnoreCase("entretenerse")) {
 			if (Game.esDia()) {
 				Game.rateActualFun = Game.rateDiaFun;
 			} else {
@@ -362,9 +368,13 @@ public class Game {
 		}
 	}
 
-	public void actualizar(int mins) {
+	public static void actualizar(int mins) {
 		cambiarValoresNecesidad(mins);
 		cambiarValoresTiempo(mins);
+		System.out.println("Comida: " + foodLevel + ", " +
+				"Estudio: " + studyLevel + ", " +
+				"Sleep: " + sleepLevel + ", " +
+				"Fun: " + funLevel);
 	}
 
 	private static void cambiarValoresTiempo(int mins) {
@@ -397,5 +407,9 @@ public class Game {
 
 	public static String evaluarEstado() {
 		return Game.estado;
+	}
+	
+	public static void newGame(){
+		resetearRates();
 	}
 }

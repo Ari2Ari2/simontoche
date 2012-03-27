@@ -14,6 +14,7 @@
 
 package simonToche.android;
 
+import simonToche.logic.Game;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,23 @@ import android.widget.TextView;
 public class MainMenuActivity extends Activity {
 
 	private TextView tv;
+	private Thread actualizadorDelJuego = new Thread(){
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			super.run();
+			while(true){
+				Game.actualizar(1);
+				try {
+					sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}		
+	};
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -97,6 +115,7 @@ public class MainMenuActivity extends Activity {
 	}
 	
 	public void nuevoJuego(View v){
+		actualizadorDelJuego.start();
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
 		this.startActivity(in);
 	}

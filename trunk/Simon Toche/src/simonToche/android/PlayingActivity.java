@@ -30,12 +30,68 @@ import simonToche.logic.Place;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class PlayingActivity extends Activity {
 
 	private Place place;
+	private Handler handler;
+	private Runnable runnable = new Runnable(){
+		@Override
+		public void run() {
+				ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
+				ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
+				ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
+				ProgressBar stb = (ProgressBar) findViewById(R.id.study_bar);
+				TextView sem = (TextView) findViewById(R.id.semana);
+				TextView dia = (TextView) findViewById(R.id.dia);
+				TextView hora = (TextView) findViewById(R.id.hora);
+				WebView wv = (WebView) findViewById(R.id.central_emoticon);
+				eb.setProgress((int) Game.getFoodLevel());
+				fb.setProgress((int) Game.getFunLevel());
+				sb.setProgress((int)Game.getSleepLevel());
+				stb.setProgress((int) Game.getStudyLevel());
+				sem.setText("Sem " + Game.getWeek());
+				dia.setText("Dia " + Game.getDay());
+				wv.loadUrl("file:///android_res/drawable/piggie_bank.gif");
+//				hora.setText(Game.getHour() + ":" + Game.getMinutes());
+				evaluarEstado();
+			
+				handler.postDelayed(this, 100);
+		}
+		
+		private void evaluarEstado(){
+			String estado = Game.evaluarEstado();
+			if(estado.isEmpty()){
+				
+			}else if(estado.equals("gano")){
+				setContentView(R.layout.gano_layout);
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				finish();
+			}else if(estado.equals("perdio")){
+				setContentView(R.layout.perdio_layout);
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				finish();
+			}else{
+				
+			}
+		}
+	};
 
 	/*
 	 * (non-Javadoc)
@@ -46,6 +102,7 @@ public class PlayingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		System.out.println("Creando PlayingActivity");
 		Bundle params = getIntent().getExtras();
 		String tag = "";
 		if (params != null) {
@@ -62,6 +119,8 @@ public class PlayingActivity extends Activity {
 			setContentView(R.layout.university_playing_view);
 			place.setBackground("university");
 		}
+		handler = new Handler();
+		handler.post(runnable);
 	}
 
 	/*
@@ -166,5 +225,5 @@ public class PlayingActivity extends Activity {
 		startActivity(i);
 		finish();
 	}
-
+	
 }

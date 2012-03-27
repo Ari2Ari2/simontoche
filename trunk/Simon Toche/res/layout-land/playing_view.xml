@@ -15,8 +15,15 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:weightSum="2" >
+        android:paddingRight="40dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" android:textSize="50dp" android:gravity="center_vertical|fill_vertical|center_horizontal|fill_horizontal"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,12 +62,12 @@
             android:src="@drawable/eat_circle"
             android:tag="food" />
 
-        <ImageView
+        <WebView
+            android:id="@+id/central_emoticon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:src="@drawable/smiley" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
 
         <ImageButton
             android:id="@+id/button4"
