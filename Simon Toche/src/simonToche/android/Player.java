@@ -35,7 +35,7 @@ public class Player {
 
 	public static void play(){
 		reproductor.start();
-//		reproductor.setLooping(true);
+		reproductor.setLooping(true);
 	}
 	
 	

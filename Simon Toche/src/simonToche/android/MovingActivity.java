@@ -38,6 +38,9 @@ public class MovingActivity extends Activity {
         TimerTask timeoutTask = new TimerTask() {
             @Override
             public void run() {
+            	intent = new Intent(MovingActivity.this, PlayingActivity.class);
+        		intent.putExtra("tag", tag);
+        		startActivity(intent);
                 finish();
             }
         };
@@ -96,9 +99,7 @@ public class MovingActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		intent = new Intent(MovingActivity.this, PlayingActivity.class);
-		intent.putExtra("tag", tag);
-		startActivity(intent);
+		
 	}
 
 	/* Viene de onStop() y va a onStart()

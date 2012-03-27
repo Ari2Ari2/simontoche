@@ -202,10 +202,12 @@ public class Game {
 	public static void comer() {
 		resetearRates();
 		Double aleatorio = Game.generator.nextDouble();
-		if (!(0.2 < aleatorio) || !(aleatorio < 0.8)) {
+		if (aleatorio < 0.15) {
 			generarEstadoAleatorio("comer");
 		} else {
+			System.out.println("Cambiando actividad actual a comer");
 			Game.actividadActual = "comer";
+			Game.minutosActividad = 60;
 			Game.asignarRatePositivo("comer");
 		}
 	}
@@ -213,10 +215,11 @@ public class Game {
 	public static void dormir() {
 		resetearRates();
 		Double aleatorio = Game.generator.nextDouble();
-		if (!(0.2 < aleatorio) || !(aleatorio < 0.8)) {
+		if (aleatorio < 0.15) {
 			generarEstadoAleatorio("dormir");
 		} else {
 			Game.actividadActual = "dormir";
+			Game.minutosActividad = 480;
 			Game.asignarRatePositivo("dormir");
 		}
 	}
@@ -224,10 +227,11 @@ public class Game {
 	public static void entretenerse() {
 		resetearRates();
 		Double aleatorio = Game.generator.nextDouble();
-		if (!(0.2 < aleatorio) || !(aleatorio < 0.8)) {
+		if (aleatorio < 0.15) {
 			generarEstadoAleatorio("entretenerse");
 		} else {
 			Game.actividadActual = "entretenerse";
+			Game.minutosActividad = 120;
 			Game.asignarRatePositivo("entretenerse");
 		}
 	}
@@ -235,10 +239,11 @@ public class Game {
 	public static void estudiar() {
 		resetearRates();
 		Double aleatorio = Game.generator.nextDouble();
-		if (!(0.2 < aleatorio) || !(aleatorio < 0.8)) {
+		if (aleatorio < 0.15) {
 			generarEstadoAleatorio("estudiar");
 		} else {
 			Game.actividadActual = "estudiar";
+			Game.minutosActividad = 360;
 			Game.asignarRatePositivo("estudiar");
 		}
 	}
@@ -401,83 +406,89 @@ public class Game {
 				, "no tienes dinero", "estas solo" } ;
 		String[] causasNoEstudiar = {"no hay silencio" 
 				, "no es el lugar apropiado", "no te puedes concentrar" } ;
-		String[] adjetivos = {"Rayos!","OH no!","Que paso?"};
+		String[] adjetivos = {"Rayos!","OH no!","¿Que paso?"};
 		String[] lugares = {"casa","universidad","centro comercial"};
 		
 		if(lugar.equals("casa")){
 			if (actividad.equalsIgnoreCase("comer")){
-				estadoAleatorio = adjetivos[ Game.generator.nextInt() % 3 ] +
-					"no pudiste"+ actividad	+ " porque " 
-						+  causasNoComer[ Game.generator.nextInt() % 3] 
-								+ "en la casa";
+				estadoAleatorio = adjetivos[ Math.abs(Game.generator.nextInt()) % 3 ] +
+					" no pudiste "+ actividad	+ " porque " 
+						+  causasNoComer[ Math.abs(Game.generator.nextInt()) % 3] 
+								+ " en la casa";
 			
 			} else	if (actividad.equalsIgnoreCase("dormir")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoDormir[Game.generator.nextInt() % 3]
-									+ "en la casa";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoDormir[Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la casa";
 				
 			} else	if (actividad.equalsIgnoreCase("estudiar")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ]+
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEstudiar[ Game.generator.nextInt() % 3]
-									+ "en la casa";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ]+
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEstudiar[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la casa";
 			} else if (actividad.equalsIgnoreCase("entretenerse")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEntrenerse[ Game.generator.nextInt() % 3]
-									+ "en la casa";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEntrenerse[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la casa";
 			}
 		}else if(lugar.equals("universidad")){
 			if (actividad.equalsIgnoreCase("comer")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-					"no pudiste"+ actividad	+ " porque " 
-						+  causasNoComer[ Game.generator.nextInt() % 3] 
-								+ "en la universidad";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+					" no pudiste "+ actividad	+ " porque " 
+						+  causasNoComer[ Math.abs(Game.generator.nextInt()) % 3] 
+								+ " en la universidad";
 			
 			} else	if (actividad.equalsIgnoreCase("dormir")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoDormir[ Game.generator.nextInt() % 3]
-									+ "en la universidad";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoDormir[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la universidad";
 				
 			} else	if (actividad.equalsIgnoreCase("estudiar")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEstudiar[ Game.generator.nextInt() % 3]
-									+ "en la universidad";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEstudiar[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la universidad";
 			} else if (actividad.equalsIgnoreCase("entretenerse")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEntrenerse[Game.generator.nextInt() % 3]
-									+ "en la universidad";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEntrenerse[Math.abs(Game.generator.nextInt()) % 3]
+									+ " en la universidad";
 			
 		}
 			}else if (lugar.equals("centro comercial")){
 			if (actividad.equalsIgnoreCase("comer")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-					"no pudiste"+ actividad	+ " porque " 
-						+  causasNoComer[ Game.generator.nextInt() % 3] 
-								+ "en el mall";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+					" no pudiste "+ actividad	+ " porque " 
+						+  causasNoComer[ Math.abs(Game.generator.nextInt()) % 3] 
+								+ " en el mall";
 			
 			} else	if (actividad.equalsIgnoreCase("dormir")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoDormir[ Game.generator.nextInt() % 3]
-									+ "en el mall";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoDormir[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en el mall";
 				
 			} else	if (actividad.equalsIgnoreCase("estudiar")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEstudiar[Game.generator.nextInt() % 3]
-									+ "en el mall";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEstudiar[Math.abs(Game.generator.nextInt()) % 3]
+									+ " en el mall";
 			} else if (actividad.equalsIgnoreCase("entretenerse")){
-				estadoAleatorio = adjetivos[Game.generator.nextInt() % 3 ] +
-						"no pudiste"+ actividad	+ " porque " 
-							+  causasNoEntrenerse[ Game.generator.nextInt() % 3]
-									+ "en el mall";
+				estadoAleatorio = adjetivos[Math.abs(Game.generator.nextInt()) % 3 ] +
+						" no pudiste "+ actividad	+ " porque " 
+							+  causasNoEntrenerse[ Math.abs(Game.generator.nextInt()) % 3]
+									+ " en el mall";
 		}
 	}
 		Game.estado = estadoAleatorio;
+	}
+
+	public static void resetEstado() {
+		// TODO Auto-generated method stub
+		estado = "";
+		resetearRates();
 	}
 }
