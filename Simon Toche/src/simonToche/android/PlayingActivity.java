@@ -32,8 +32,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -41,6 +46,7 @@ public class PlayingActivity extends Activity {
 
 	private Place place;
 	private Handler handler;
+	private Animation blinker;
 	private Runnable runnable = new Runnable(){
 		@Override
 		public void run() {
@@ -56,20 +62,60 @@ public class PlayingActivity extends Activity {
 				fb.setProgress((int) Game.getFunLevel());
 				sb.setProgress((int)Game.getSleepLevel());
 				stb.setProgress((int) Game.getStudyLevel());
+				startBlinkAnimations(eb,fb,sb,stb);
 				sem.setText("Sem " + Game.getWeek());
 				dia.setText("Dia " + Game.getDay());
-				wv.loadUrl("file:///android_res/drawable/piggie_bank.gif");
-//				hora.setText(Game.getHour() + ":" + Game.getMinutes());
+//				wv.loadUrl("file:///android_res/drawable/piggie_bank.gif");
+				hora.setText((Game.getHour() > 9 ? Game.getHour() : "0" + Game.getHour())
+						+ ":" + (Game.getMinutes() > 9 ? Game.getMinutes() : "0" + Game.getMinutes()));
 				evaluarEstado();
 			
 				handler.postDelayed(this, 100);
 		}
 		
+		private void startBlinkAnimations(ProgressBar eb, ProgressBar fb,
+				ProgressBar sb, ProgressBar stb) {
+//			System.out.println("Actualizando animaciones");
+//			System.out.println(fb.getProgress());
+//			System.out.println(blinker);
+//			System.out.println(fb.getAnimation());
+			// TODO Auto-generated method stub
+			if(eb.getProgress() <= 20){
+				if(eb.getAnimation() == null){
+					eb.startAnimation(blinker);
+				}
+			}else{
+				eb.clearAnimation();
+			}
+			if(fb.getProgress() <= 20){
+				if(fb.getAnimation() == null){
+					fb.startAnimation(blinker);
+				}
+			}else{
+				fb.clearAnimation();
+			}
+			if(sb.getProgress() <= 20){
+				if(sb.getAnimation() == null){
+					sb.startAnimation(blinker);
+				}
+			}else{
+				sb.clearAnimation();
+			}
+			if(stb.getProgress() <= 20){
+				if(stb.getAnimation() == null){
+					stb.startAnimation(blinker);
+				}
+			}else{
+				stb.clearAnimation();
+			}
+		}
+
 		private void evaluarEstado(){
 			String estado = Game.evaluarEstado();
 			if(estado.isEmpty()){
 				
 			}else if(estado.equals("gano")){
+				System.out.println("Actualizando estado a gano");
 				setContentView(R.layout.gano_layout);
 				try {
 					Thread.sleep(5000);
@@ -79,6 +125,7 @@ public class PlayingActivity extends Activity {
 				}
 				finish();
 			}else if(estado.equals("perdio")){
+				System.out.println("Actualizando estado a perdio");
 				setContentView(R.layout.perdio_layout);
 				try {
 					Thread.sleep(5000);
@@ -88,7 +135,9 @@ public class PlayingActivity extends Activity {
 				}
 				finish();
 			}else{
-				
+				System.out.println("Actualizando estado");
+				TextView tv = (TextView)findViewById(R.id.main_message);
+				tv.setText(estado);
 			}
 		}
 	};
@@ -121,6 +170,7 @@ public class PlayingActivity extends Activity {
 		}
 		handler = new Handler();
 		handler.post(runnable);
+		blinker = AnimationUtils.loadAnimation(this, R.anim.blink);
 	}
 
 	/*
@@ -143,6 +193,7 @@ public class PlayingActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		startTransactionAnimation(true);
 	}
 
 	/*
@@ -200,14 +251,41 @@ public class PlayingActivity extends Activity {
 	}
 
 	public void elegirAccion(View v) {
-		Intent i = new Intent(PlayingActivity.this, SelectActivity.class);
-		i.putExtra("Place", this.place);
 		String tag = (String) v.getTag();
-		i.putExtra("tag", tag);
-		startActivity(i);
+//		System.out.println("El lugar es: " + this.place);
+		if(this.place.getBackground().equals("mall") && 
+				(tag.equals("sleeping") || tag.equals("studying"))){
+			if(findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE){
+				toggleTimeMapBar(findViewById(R.id.middle_button));
+			}
+			TextView tv = (TextView) findViewById(R.id.main_message);
+			if(tag.equals("sleeping")){
+				tv.setText("No vine a un centro comercial a dormir");
+			}else{
+				tv.setText("¿Estudiar en un centro comercial?\nClaro...");
+			}
+		}else{
+			startTransactionAnimation(false);
+			Intent i = new Intent(PlayingActivity.this, SelectActivity.class);
+			i.putExtra("Place", this.place);
+			i.putExtra("tag", tag);
+			startActivity(i);
+		}
+	}
+	
+	public void startTransactionAnimation(boolean entrada){
+		if(!entrada && findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE){
+			toggleTimeMapBar(findViewById(R.id.middle_button));
+		}
+		View v = findViewById(R.id.sfu);
+		TranslateAnimation trans = new TranslateAnimation(0f, 0f, (entrada ? -1000f : 0f), (entrada ? 0f :-1000f));
+		trans.setDuration(1500);
+		trans.setFillAfter(true);
+		v.startAnimation(trans);
 	}
 	
 	public void toggleTimeMapBar(View v){
+		((TextView)findViewById(R.id.main_message)).setText("");
 		View bar = findViewById(R.id.time_map_bar);
 		ImageButton button = (ImageButton)v;
 		if(bar.getVisibility() == View.INVISIBLE){
