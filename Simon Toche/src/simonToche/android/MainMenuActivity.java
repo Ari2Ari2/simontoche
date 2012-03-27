@@ -70,6 +70,8 @@ public class MainMenuActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		Player p = new Player(this);
+		p.play();
 	}
 
 	/* Va a onResume() si el usuario regresa a la actividad
