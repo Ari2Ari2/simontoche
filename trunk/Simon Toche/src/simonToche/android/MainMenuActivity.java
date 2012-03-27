@@ -86,7 +86,6 @@ public class MainMenuActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		Player.pause();
 	}
 	
 	/* Va a onRestart() si el usuario navega hasta
@@ -99,7 +98,6 @@ public class MainMenuActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		Player.pause();
 	}
 	
 	/* (non-Javadoc)
@@ -123,9 +121,9 @@ public class MainMenuActivity extends Activity {
 	}
 	
 	public void nuevoJuego(View v){
+		Game.newGame();
 		actualizadorDelJuego.start();
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
-		Game.newGame();
 		this.startActivity(in);
 	}
 	

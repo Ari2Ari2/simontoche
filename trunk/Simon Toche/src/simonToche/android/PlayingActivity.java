@@ -48,9 +48,13 @@ public class PlayingActivity extends Activity {
 	private Place place;
 	private Handler handler;
 	private Animation blinker;
+	String actividadActual;
 	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
+			if(Game.evaluarEstado().equals("gano") || Game.evaluarEstado().equals("perdio")){
+				finish();
+			}
 			ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
 			ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
 			ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
@@ -58,7 +62,7 @@ public class PlayingActivity extends Activity {
 			TextView sem = (TextView) findViewById(R.id.semana);
 			TextView dia = (TextView) findViewById(R.id.dia);
 			TextView hora = (TextView) findViewById(R.id.hora);
-
+			if(eb == null) finish();
 			eb.setProgress((int) Game.getFoodLevel());
 			fb.setProgress((int) Game.getFunLevel());
 			sb.setProgress((int) Game.getSleepLevel());
@@ -73,8 +77,11 @@ public class PlayingActivity extends Activity {
 					+ (Game.getMinutes() > 9 ? Game.getMinutes() : "0"
 							+ Game.getMinutes()));
 			evaluarEstado();
-
-			handler.postDelayed(this, 100);
+//			if(!actividadActual.equals(Game.getActividadActual())){
+//				actividadActual = Game.getActividadActual();
+//				cambiarEmoticon((WebView) findViewById(R.id.central_emoticon), actividadActual);
+//			}
+			handler.postDelayed(this, 500);
 		}
 
 		private void startBlinkAnimations(ProgressBar eb, ProgressBar fb,
@@ -139,9 +146,8 @@ public class PlayingActivity extends Activity {
 				}
 				finish();
 			} else {
-				System.out.println("Actualizando estado");
-				TextView tv = (TextView) findViewById(R.id.main_message);
 				setMessage(estado);
+				Game.resetEstado();
 			}
 		}
 	};
@@ -198,8 +204,8 @@ public class PlayingActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		WebView wv = (WebView) findViewById(R.id.central_emoticon);
-		String actividad = Game.getActividadActual();
-		cambiarEmoticon(wv, actividad);
+		actividadActual = Game.getActividadActual();
+		cambiarEmoticon(wv, actividadActual);
 		startTransactionAnimation(true);
 
 	}
@@ -207,6 +213,7 @@ public class PlayingActivity extends Activity {
 	private void cambiarEmoticon(WebView wv, String actividad) {
 		System.out.println("Cambiando emoticon a " + actividad);
 		wv.invalidate();
+		wv.setBackgroundColor(0x00000000);
 		if (actividad.equalsIgnoreCase("comer")) {
 			wv.loadUrl("file:///android_res/drawable/comiendo.gif");
 		} else if (actividad.equalsIgnoreCase("dormir")) {
@@ -279,6 +286,7 @@ public class PlayingActivity extends Activity {
 		TextView tv = (TextView) findViewById(R.id.main_message);
 		tv.setText(msg);
 		Animation a = AnimationUtils.loadAnimation(this, R.anim.desvanecer);
+		a.setFillAfter(true);
 		tv.startAnimation(a);
 	}
 
