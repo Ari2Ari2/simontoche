@@ -117,6 +117,7 @@ public class MainMenuActivity extends Activity {
 	public void nuevoJuego(View v){
 		actualizadorDelJuego.start();
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
+		Game.newGame();
 		this.startActivity(in);
 	}
 	
