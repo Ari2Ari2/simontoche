@@ -35,17 +35,6 @@ public class MovingActivity extends Activity {
 		intent = new Intent(MovingActivity.this, PlayingActivity.class);
 		intent.putExtra("tag", tag);
 		startActivity(intent);
-		finish();
-		
-	}
-	
-	private void waitAWhile() {
-		try {
-			Thread.sleep(8000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 

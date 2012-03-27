@@ -20,6 +20,7 @@
     android:weightSum="1.0"
     android:orientation="horizontal" 
     >
+
     
     <ImageView
         android:layout_width="wrap_content"
@@ -27,13 +28,18 @@
         android:layout_weight=".15"
         android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/fun_emoticon"/>
 
-    <ImageView
-        android:id="@+id/bar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
-        android:adjustViewBounds="true"
-        android:src="@drawable/fun_bar" android:scaleType="fitXY" android:paddingRight="5dp" android:paddingLeft="5dp"/>
+
+    <ProgressBar
+        android:id="@+id/fun_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent"
+      style="@style/CustomProgressBar"
+      android:layout_weight=".30"
+      android:max="100"
+      android:layout_margin="5dip"
+      android:paddingRight="5dp"
+      android:paddingLeft="5dp"
+      android:background="@drawable/fun_bar" android:paddingTop="5dp" android:paddingBottom="5dp"/>
     
     <Space 
         android:layout_width="wrap_content"
@@ -46,13 +52,19 @@
         android:layout_weight=".15"
         android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/eat_emoticon"/>
 
-    <ImageView
-        android:id="@+id/bar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
+<ProgressBar
+        android:id="@+id/eat_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent"
+      style="@style/CustomProgressBar"
+      android:layout_weight=".30"
+      android:max="100"
+      android:layout_margin="5dip"
+      android:paddingRight="5dp"
+      android:paddingLeft="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" android:paddingLeft="5dp" android:paddingRight="5dp" android:src="@drawable/eat_bar"/>
+        android:scaleType="fitXY"
+      android:background="@drawable/eat_bar" android:paddingBottom="5dp" android:paddingTop="5dp"/>
     
     </LinearLayout>
     
@@ -81,13 +93,19 @@
         android:layout_weight=".15"
         android:adjustViewBounds="true" android:src="@drawable/study_emoticon" android:scaleType="fitCenter"/>
 
-    <ImageView
-        android:id="@+id/bar3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
+  <ProgressBar
+        android:id="@+id/study_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent"
+      style="@style/CustomProgressBar"
+      android:layout_weight=".30"
+      android:max="100"
+      android:layout_margin="5dip"
+      android:paddingRight="5dp"
+      android:paddingLeft="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" android:src="@drawable/study_bar" android:paddingLeft="5dp" android:paddingRight="5dp"/>
+        android:scaleType="fitXY"
+      android:background="@drawable/study_bar" android:progress="80" android:paddingTop="5dp" android:paddingBottom="5dp"/>
     
     <Space 
         android:layout_width="wrap_content"
@@ -100,13 +118,19 @@
         android:layout_weight=".15"
         android:adjustViewBounds="true" android:scaleType="fitCenter" android:src="@drawable/sleep_emoticon"/>
 
-    <ImageView
-        android:id="@+id/bar4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
+      <ProgressBar
+        android:id="@+id/sleep_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent"
+      style="@style/CustomProgressBar"
+      android:layout_weight=".30"
+      android:max="100"
+      android:layout_margin="5dip"
+      android:paddingRight="5dp"
+      android:paddingLeft="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY" android:src="@drawable/sleep_bar" android:paddingLeft="5dp" android:paddingRight="5dp"/>
+        android:scaleType="fitXY"
+      android:background="@drawable/sleep_bar" android:progress="50" android:paddingTop="5dp" android:paddingBottom="5dp"/>
     
     </LinearLayout>
 
@@ -116,28 +140,52 @@
 	    android:layout_width="wrap_content"
 	      android:layout_height="60dp"      
 	      android:layout_gravity="center"
-	       android:background="@android:color/white"
-	      android:id="@+id/time_map_bar" android:visibility="invisible">
+	       android:background="@android:color/transparent"
+	      android:id="@+id/time_map_bar" android:visibility="visible">
 
-		<ImageView
-		    android:id="@+id/imageView1"
+	    <LinearLayout 
+	    android:layout_width="wrap_content"
+	      android:layout_height="60dp"      
+	      android:layout_gravity="center"
+		    android:background="@drawable/clock" 
+	      android:orientation="vertical">
+	        <TextView
+		    android:id="@+id/semana"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:adjustViewBounds="true" android:src="@drawable/week_and_day"/>
-
-		<AnalogClock
-		    android:id="@+id/imageView2"
+		    android:adjustViewBounds="true" 
+		    android:text="Sem 1" 
+		    android:textSize="18dp"
+		    android:textColor="@android:color/black" android:layout_marginTop="5dp" android:layout_gravity="left" android:layout_marginLeft="5dp"/>
+	        <TextView
+		    android:id="@+id/dia"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:adjustViewBounds="true" android:src="@drawable/clock" android:background="@drawable/clock"/>
+		    android:adjustViewBounds="true" 
+		    android:text="Dia 1"
+		    android:textSize="18dp"
+		    android:textColor="@android:color/black" android:layout_gravity="right" android:layout_marginRight="5dp"/>
+	    </LinearLayout>
 
+		<TextView
+		    android:id="@+id/hora"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:adjustViewBounds="true" 
+		    android:background="@drawable/clock"
+		    android:text="16:25" 
+		    android:textSize="20dp"
+		    android:textColor="@android:color/black" android:paddingLeft="3dp" android:paddingRight="3dp" android:layout_gravity="center_vertical|fill_vertical|center_horizontal" android:textIsSelectable="false" android:gravity="center_vertical|center_horizontal"/>
+
+<!--         android:id="@+id/map_button" -->
 		<ImageButton
-		    android:id="@+id/map_button"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:adjustViewBounds="true" android:scaleType="fitXY" android:background="@drawable/map_icon" android:onClick="goToMap"/>
+		    android:adjustViewBounds="true"
+		    android:scaleType="fitXY"
+		    android:background="@drawable/map_icon"
+		    android:onClick="goToMap"/>
 	    
 	</LinearLayout>
-
 
 </LinearLayout>
