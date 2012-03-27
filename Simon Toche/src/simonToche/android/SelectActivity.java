@@ -34,12 +34,13 @@ public class SelectActivity extends android.app.Activity {
 		super.onCreate(savedInstanceState);
 		Bundle params = getIntent().getExtras();
 		Place p = (Place) getIntent().getSerializableExtra("Place");
+		Game.setPlace(p);
 		String tagAccion = params.getString("tag");
-		if (p.getBackground().equalsIgnoreCase("home")) {
+		if (p.getBackground().equalsIgnoreCase("casa")) {
 			this.contentHome(tagAccion);
-		}else if (p.getBackground().equalsIgnoreCase("mall")) {
+		}else if (p.getBackground().equalsIgnoreCase("centro comercial")) {
 			this.contentMall(tagAccion);
-		}else if (p.getBackground().equalsIgnoreCase("university")) {
+		}else if (p.getBackground().equalsIgnoreCase("universodad")) {
 			this.contentUniversity(tagAccion);
 		}		
 //		startTransitionAnimation(true);

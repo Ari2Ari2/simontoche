@@ -48,74 +48,77 @@ public class PlayingActivity extends Activity {
 	private Place place;
 	private Handler handler;
 	private Animation blinker;
-	private Runnable runnable = new Runnable(){
+	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
-				ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
-				ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
-				ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
-				ProgressBar stb = (ProgressBar) findViewById(R.id.study_bar);
-				TextView sem = (TextView) findViewById(R.id.semana);
-				TextView dia = (TextView) findViewById(R.id.dia);
-				TextView hora = (TextView) findViewById(R.id.hora);
-				
-				eb.setProgress((int) Game.getFoodLevel());
-				fb.setProgress((int) Game.getFunLevel());
-				sb.setProgress((int)Game.getSleepLevel());
-				stb.setProgress((int) Game.getStudyLevel());
-				startBlinkAnimations(eb,fb,sb,stb);
-				sem.setText("Sem " + Game.getWeek());
-				dia.setText("Dia " + Game.getDay());
-//				wv.loadUrl("file:///android_res/drawable/piggie_bank.gif");
-				hora.setText((Game.getHour() > 9 ? Game.getHour() : "0" + Game.getHour())
-						+ ":" + (Game.getMinutes() > 9 ? Game.getMinutes() : "0" + Game.getMinutes()));
-				evaluarEstado();
-			
-				handler.postDelayed(this, 100);
+			ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
+			ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
+			ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
+			ProgressBar stb = (ProgressBar) findViewById(R.id.study_bar);
+			TextView sem = (TextView) findViewById(R.id.semana);
+			TextView dia = (TextView) findViewById(R.id.dia);
+			TextView hora = (TextView) findViewById(R.id.hora);
+
+			eb.setProgress((int) Game.getFoodLevel());
+			fb.setProgress((int) Game.getFunLevel());
+			sb.setProgress((int) Game.getSleepLevel());
+			stb.setProgress((int) Game.getStudyLevel());
+			startBlinkAnimations(eb, fb, sb, stb);
+			sem.setText("Sem " + Game.getWeek());
+			dia.setText("Dia " + Game.getDay());
+			// wv.loadUrl("file:///android_res/drawable/piggie_bank.gif");
+			hora.setText((Game.getHour() > 9 ? Game.getHour() : "0"
+					+ Game.getHour())
+					+ ":"
+					+ (Game.getMinutes() > 9 ? Game.getMinutes() : "0"
+							+ Game.getMinutes()));
+			evaluarEstado();
+
+			handler.postDelayed(this, 100);
 		}
-		
+
 		private void startBlinkAnimations(ProgressBar eb, ProgressBar fb,
 				ProgressBar sb, ProgressBar stb) {
-//			System.out.println("Actualizando animaciones");
-//			System.out.println(fb.getProgress());
-//			System.out.println(blinker);
-//			System.out.println(fb.getAnimation());
+			// System.out.println("Actualizando animaciones");
+			// System.out.println(fb.getProgress());
+			// System.out.println(blinker);
+			// System.out.println(fb.getAnimation());
 			// TODO Auto-generated method stub
-			if(eb.getProgress() <= 20){
-				if(eb.getAnimation() == null){
+			if (eb.getProgress() <= 20) {
+				if (eb.getAnimation() == null) {
 					eb.startAnimation(blinker);
 				}
-			}else{
+			} else {
 				eb.clearAnimation();
 			}
-			if(fb.getProgress() <= 20){
-				if(fb.getAnimation() == null){
+			if (fb.getProgress() <= 20) {
+				if (fb.getAnimation() == null) {
 					fb.startAnimation(blinker);
 				}
-			}else{
+			} else {
 				fb.clearAnimation();
 			}
-			if(sb.getProgress() <= 20){
-				if(sb.getAnimation() == null){
+			if (sb.getProgress() <= 20) {
+				if (sb.getAnimation() == null) {
 					sb.startAnimation(blinker);
 				}
-			}else{
+			} else {
 				sb.clearAnimation();
 			}
-			if(stb.getProgress() <= 20){
-				if(stb.getAnimation() == null){
+			if (stb.getProgress() <= 20) {
+				if (stb.getAnimation() == null) {
 					stb.startAnimation(blinker);
 				}
-			}else{
+			} else {
 				stb.clearAnimation();
 			}
 		}
 
-		private void evaluarEstado(){
+		private void evaluarEstado() {
 			String estado = Game.evaluarEstado();
-			if(estado.isEmpty()){
-				
-			}else if(estado.equals("gano")){
+			if (estado.isEmpty()) {
+
+			} else if (estado.equals("gano")) {
 				System.out.println("Actualizando estado a gano");
 				setContentView(R.layout.gano_layout);
 				try {
@@ -125,7 +128,7 @@ public class PlayingActivity extends Activity {
 					e.printStackTrace();
 				}
 				finish();
-			}else if(estado.equals("perdio")){
+			} else if (estado.equals("perdio")) {
 				System.out.println("Actualizando estado a perdio");
 				setContentView(R.layout.perdio_layout);
 				try {
@@ -135,9 +138,9 @@ public class PlayingActivity extends Activity {
 					e.printStackTrace();
 				}
 				finish();
-			}else{
+			} else {
 				System.out.println("Actualizando estado");
-				TextView tv = (TextView)findViewById(R.id.main_message);
+				TextView tv = (TextView) findViewById(R.id.main_message);
 				setMessage(estado);
 			}
 		}
@@ -159,15 +162,15 @@ public class PlayingActivity extends Activity {
 			tag = params.getString("tag");
 		}
 		this.place = new Place();
-		if (tag.equalsIgnoreCase("home")) {
+		if (tag.equalsIgnoreCase("casa")) {
 			setContentView(R.layout.house_playing_view);
-			place.setBackground("home");
-		} else if (tag.equalsIgnoreCase("mall")) {
+			place.setBackground("casa");
+		} else if (tag.equalsIgnoreCase("centro comercial")) {
 			setContentView(R.layout.mall_playing_view);
-			place.setBackground("mall");
-		} else if (tag.equalsIgnoreCase("university")) {
+			place.setBackground("centro comercial");
+		} else if (tag.equalsIgnoreCase("universidad")) {
 			setContentView(R.layout.university_playing_view);
-			place.setBackground("university");
+			place.setBackground("universidad");
 		}
 		handler = new Handler();
 		handler.post(runnable);
@@ -193,27 +196,27 @@ public class PlayingActivity extends Activity {
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		super.onResume();		
+		super.onResume();
 		WebView wv = (WebView) findViewById(R.id.central_emoticon);
 		String actividad = Game.getActividadActual();
 		cambiarEmoticon(wv, actividad);
 		startTransactionAnimation(true);
-		
+
 	}
 
-	private void cambiarEmoticon(WebView wv, String actividad) {	
+	private void cambiarEmoticon(WebView wv, String actividad) {
 		System.out.println("Cambiando emoticon a " + actividad);
 		wv.invalidate();
-		if(actividad.equalsIgnoreCase("comer")){
+		if (actividad.equalsIgnoreCase("comer")) {
 			wv.loadUrl("file:///android_res/drawable/comiendo.gif");
-		}else if (actividad.equalsIgnoreCase("dormir")){
+		} else if (actividad.equalsIgnoreCase("dormir")) {
 			System.out.println("Loading durmiendo.gif");
 			wv.loadUrl("file:///android_res/drawable/durmiendo.gif");
-		}else if (actividad.equalsIgnoreCase("estudiar")){
+		} else if (actividad.equalsIgnoreCase("estudiar")) {
 			wv.loadUrl("file:///android_res/drawable/estudiando.gif");
-		}else if (actividad.equalsIgnoreCase("entretenerse")){
+		} else if (actividad.equalsIgnoreCase("entretenerse")) {
 			wv.loadUrl("file:///android_res/drawable/divertido.gif");
-		}else{
+		} else {
 			wv.loadUrl("file:///android_res/drawable/feliz.gif");
 		}
 	}
@@ -271,8 +274,8 @@ public class PlayingActivity extends Activity {
 				Game.getPlace().getBackground(), "drawable", getPackageName());
 		v.setBackgroundResource(resID);
 	}
-	
-	public void setMessage(String msg){
+
+	public void setMessage(String msg) {
 		TextView tv = (TextView) findViewById(R.id.main_message);
 		tv.setText(msg);
 		Animation a = AnimationUtils.loadAnimation(this, R.anim.desvanecer);
@@ -281,18 +284,18 @@ public class PlayingActivity extends Activity {
 
 	public void elegirAccion(View v) {
 		String tag = (String) v.getTag();
-//		System.out.println("El lugar es: " + this.place);
-		if(this.place.getBackground().equals("mall") && 
-				(tag.equals("sleeping") || tag.equals("studying"))){
-			if(findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE){
+		// System.out.println("El lugar es: " + this.place);
+		if (this.place.getBackground().equals("centro comercial")
+				&& (tag.equals("sleeping") || tag.equals("studying"))) {
+			if (findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE) {
 				toggleTimeMapBar(findViewById(R.id.middle_button));
 			}
-			if(tag.equals("sleeping")){
+			if (tag.equals("sleeping")) {
 				setMessage("No vine a un centro comercial a dormir");
-			}else{
+			} else {
 				setMessage("¿Estudiar en un centro comercial?\nClaro...");
 			}
-		}else{
+		} else {
 			startTransactionAnimation(false);
 			Intent i = new Intent(PlayingActivity.this, SelectActivity.class);
 			i.putExtra("Place", this.place);
@@ -300,36 +303,38 @@ public class PlayingActivity extends Activity {
 			startActivity(i);
 		}
 	}
-	
-	public void startTransactionAnimation(boolean entrada){
-		if(!entrada && findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE){
+
+	public void startTransactionAnimation(boolean entrada) {
+		if (!entrada
+				&& findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE) {
 			toggleTimeMapBar(findViewById(R.id.middle_button));
 		}
 		View v = findViewById(R.id.sfu);
-		TranslateAnimation trans = new TranslateAnimation(0f, 0f, (entrada ? -1000f : 0f), (entrada ? 0f :-1000f));
+		TranslateAnimation trans = new TranslateAnimation(0f, 0f,
+				(entrada ? -1000f : 0f), (entrada ? 0f : -1000f));
 		trans.setDuration(1500);
 		trans.setFillAfter(true);
 		v.startAnimation(trans);
 	}
-	
-	public void toggleTimeMapBar(View v){
-		((TextView)findViewById(R.id.main_message)).setText("");
+
+	public void toggleTimeMapBar(View v) {
+		((TextView) findViewById(R.id.main_message)).setText("");
 		View bar = findViewById(R.id.time_map_bar);
-		ImageButton button = (ImageButton)v;
-		if(bar.getVisibility() == View.INVISIBLE){
+		ImageButton button = (ImageButton) v;
+		if (bar.getVisibility() == View.INVISIBLE) {
 			bar.setVisibility(View.VISIBLE);
 			button.setImageResource(R.drawable.up_arrow);
-		}else{
+		} else {
 			bar.setVisibility(View.INVISIBLE);
 			button.setImageResource(R.drawable.down_arrow);
 		}
 	}
-	
-	public void goToMap(View v){
+
+	public void goToMap(View v) {
 		Intent i = new Intent(PlayingActivity.this, MoveActivity.class);
 		i.putExtra("place", "");
 		startActivity(i);
 		finish();
 	}
-	
+
 }
