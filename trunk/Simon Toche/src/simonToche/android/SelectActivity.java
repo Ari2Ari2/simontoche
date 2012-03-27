@@ -31,22 +31,27 @@ public class SelectActivity extends android.app.Activity {
 	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
-			ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
-			ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
-			ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
-			ProgressBar stb = (ProgressBar) findViewById(R.id.study_bar);
-			if(eb == null) finish();
-			eb.setProgress((int) Game.getFoodLevel());
-			fb.setProgress((int) Game.getFunLevel());
-			sb.setProgress((int) Game.getSleepLevel());
-			stb.setProgress((int) Game.getStudyLevel());
-//			startBlinkAnimations(eb, fb, sb, stb);
-			
-//			if(!actividadActual.equals(Game.getActividadActual())){
-//				actividadActual = Game.getActividadActual();
-//				cambiarEmoticon((WebView) findViewById(R.id.central_emoticon), actividadActual);
-//			}
-			handler.postDelayed(this, 500);
+			if(Game.evaluarEstado().equals("gano") || Game.evaluarEstado().equals("perdio")){
+				finish();
+			}else{
+
+				ProgressBar eb = (ProgressBar) findViewById(R.id.eat_bar);
+				ProgressBar fb = (ProgressBar) findViewById(R.id.fun_bar);
+				ProgressBar sb = (ProgressBar) findViewById(R.id.sleep_bar);
+				ProgressBar stb = (ProgressBar) findViewById(R.id.study_bar);
+				if(eb == null) finish();
+				eb.setProgress((int) Game.getFoodLevel());
+				fb.setProgress((int) Game.getFunLevel());
+				sb.setProgress((int) Game.getSleepLevel());
+				stb.setProgress((int) Game.getStudyLevel());
+				startBlinkAnimations(eb, fb, sb, stb);
+				
+//				if(!actividadActual.equals(Game.getActividadActual())){
+//					actividadActual = Game.getActividadActual();
+//					cambiarEmoticon((WebView) findViewById(R.id.central_emoticon), actividadActual);
+//				}
+				handler.postDelayed(this, 500);
+			}
 		}
 
 		private void startBlinkAnimations(ProgressBar eb, ProgressBar fb,

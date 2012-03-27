@@ -44,7 +44,9 @@ public class MovingActivity extends Activity {
                 finish();
             }
         };
-        timeoutTimer.schedule(timeoutTask, 5000);
+        int delay = 2000 +((int) Math.random() * 7000);
+        timeoutTimer.schedule(timeoutTask, delay);
+        Player.play(this,R.raw.traffic1);
         
 	}
 

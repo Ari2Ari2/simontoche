@@ -28,6 +28,7 @@ package simonToche.android;
 import simonToche.logic.Game;
 import simonToche.logic.Place;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +47,7 @@ public class PlayingActivity extends Activity {
 	private Handler handler;
 	private Animation blinker;
 	String actividadActual;
+	Context context = this;
 	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
@@ -73,6 +75,9 @@ public class PlayingActivity extends Activity {
 					+ ":"
 					+ (Game.getMinutes() > 9 ? Game.getMinutes() : "0"
 							+ Game.getMinutes()));
+			if(Game.getHour() == 6 && Game.getMinutes() <= 5){
+				Player.play(context, R.raw.inthemorning);
+			}
 			System.out.println("Evaluando estado");
 			evaluarEstado();
 

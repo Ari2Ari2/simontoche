@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class GameOverActivity extends Activity {
 
@@ -88,8 +90,8 @@ public class GameOverActivity extends Activity {
 					}
 					}
 				}.start();
-				
-			
+			Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
+			findViewById(R.id.gameover_text).startAnimation(animation);		
 			
 		}
 		timeoutTimer = new Timer();
