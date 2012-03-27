@@ -14,7 +14,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
-        android:weightSum="2" >
+        android:weightSum="2" android:id="@+id/sfu">
 
         <LinearLayout
             android:layout_width="match_parent"

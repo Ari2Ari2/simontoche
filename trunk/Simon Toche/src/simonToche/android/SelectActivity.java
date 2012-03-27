@@ -10,10 +10,11 @@ import java.util.List;
 
 import simonToche.logic.Activity;
 import simonToche.logic.Category;
+import simonToche.logic.Game;
 import simonToche.logic.Place;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
@@ -41,7 +42,7 @@ public class SelectActivity extends android.app.Activity {
 			this.contentMall(tagAccion);
 		}else if (p.getBackground().equalsIgnoreCase("university")) {
 			this.contentUniversity(tagAccion);
-		}
+		}		
 		ImageButton button = (ImageButton)findViewById(R.id.middle_button);
 		View bar = findViewById(R.id.time_map_bar);
 		button.setImageResource(R.drawable.up_arrow);
@@ -57,6 +58,8 @@ public class SelectActivity extends android.app.Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+		((ImageButton)findViewById(R.id.middle_button)).setImageResource(R.drawable.up_arrow);
+		findViewById(R.id.time_map_bar).setVisibility(View.INVISIBLE);
 	}
 
 	/*
@@ -68,6 +71,7 @@ public class SelectActivity extends android.app.Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		startTransitionAnimation(true);
 	}
 
 	/*
@@ -103,6 +107,7 @@ public class SelectActivity extends android.app.Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		startTransitionAnimation(false);
 	}
 
 	/*
@@ -150,50 +155,41 @@ public class SelectActivity extends android.app.Activity {
 
 	public void elegirEstudiar(View v) {
 		String tag = (String) v.getTag();
+		Game.estudiar();
 		this.finish();
 	}
 
 	public void elegirDormir(View v) {
 		String tag = (String) v.getTag();
+		Game.dormir();
 		this.finish();
 	}
 
 	public void elegirDiversion(View v) {
 		String tag = (String) v.getTag();
+		Game.entretenerse();
 		this.finish();
 	}
 
 	public void elegirComer(View v) {
 		String tag = (String) v.getTag();
+		Game.comer();
 		this.finish();
 	}
 
 	private void contentUniversity(String tag) {
-		// TODO Auto-generated method stub
-		if (tag.equalsIgnoreCase("food")) {
-			View v = findViewById(R.id.sfu);
-			TranslateAnimation trans = new TranslateAnimation(0f, 100f, 100f, 0f);
-			trans.setDuration(100);
-			v.startAnimation(trans);
-			trans.setFillAfter(true);
-			setContentView(R.layout.university_eat_select_activity_view);
-		}else if (tag.equalsIgnoreCase("studying")) {
-			setContentView(R.layout.university_study_select_activity_view);
-		}else if (tag.equalsIgnoreCase("sleeping")) {
-			setContentView(R.layout.university_sleep_select_activity_view);
-		}else if (tag.equalsIgnoreCase("fun")) {
-			setContentView(R.layout.university_fun_select_activity_view);
-		}
+		 setContentView(R.layout.university_eat_select_activity_view);
+		 View v = findViewById(R.id.sfu);
+		TranslateAnimation trans = new TranslateAnimation(0f, 0f, 1000f, 0f);
+		trans.setDuration(1500);
+		trans.setFillAfter(true);
+		v.startAnimation(trans);
 	}
 
 	private void contentMall(String tag) {
 		// TODO Auto-generated method stub
 		if (tag.equalsIgnoreCase("food")) {
 			setContentView(R.layout.mall_eat_select_activity_view);
-		}else if (tag.equalsIgnoreCase("studying")) {
-			setContentView(R.layout.mall_study_select_activity_view);
-		}else if (tag.equalsIgnoreCase("sleeping")) {
-			setContentView(R.layout.mall_sleep_select_activity_view);
 		}else if (tag.equalsIgnoreCase("fun")) {
 			setContentView(R.layout.mall_fun_select_activity_view);
 		}
@@ -214,6 +210,21 @@ public class SelectActivity extends android.app.Activity {
 	
 	public void toggleTimeMapBar(View v){
 		finish();
+	}
+	
+
+	
+	public void startTransitionAnimation(boolean entrada){
+		View v = findViewById(R.id.sfu);
+		TranslateAnimation trans = new TranslateAnimation(0f, 0f, (entrada ? 1000f : 0f), (entrada ? 0f :1000f));
+		ScaleAnimation sanim = new ScaleAnimation(0, 1, 0, 1);
+		sanim.setDuration(100);
+		sanim.setFillAfter(true);
+		trans.setDuration(1500);
+		trans.setFillAfter(true);
+		findViewById(R.id.time_map_bar).startAnimation(sanim);
+//		v.startAnimation(trans);
+		
 	}
 
 }

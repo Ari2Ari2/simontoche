@@ -8,11 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
+	
 	private static String estado = "";
-	private static final int foodAumento = 0;
-	private static final int sleepAumento = 0;
-	private static final int studyAumento = 0;
-	private static final int funAumento = 0;
 	private static Random generator;
 	private static double timeFactor = 80;
 	private static double foodLevel = 80;
@@ -43,68 +40,12 @@ public class Game {
 	private static double rateActualFun = 0;
 	private static String actividadActual = "";
 	private static int minutosActividad = 0;
-
-	public static double consultarNivel(String actividad) {
-		if (actividad.equalsIgnoreCase("comer")) {
-			return Game.foodLevel;
-		} else if (actividad.equalsIgnoreCase("dormir")) {
-			return Game.sleepLevel;
-		} else if (actividad.equalsIgnoreCase("estudiar")) {
-			return Game.studyLevel;
-		} else if (actividad.equalsIgnoreCase("entretenerse")) {
-			return Game.funLevel;
-		}
-		return 0;
-	}
-
-	public static String consultarNivelNombre(String actividad) {
-		if (actividad.equalsIgnoreCase("comer")) {
-			return "foodLevel";
-		} else if (actividad.equalsIgnoreCase("dormir")) {
-			return "sleepLevel";
-		} else if (actividad.equalsIgnoreCase("estudiar")) {
-			return "studyLevel";
-		} else if (actividad.equalsIgnoreCase("entretenerse")) {
-			return "funLevel";
-		}
-		return "";
-	}
-
-	public static boolean consultarNivelApropiado(String nivel,
-			double nivelInicial) {
-		if (nivel.equalsIgnoreCase("foodLevel")) {
-			return Game.foodLevel >= Game.foodAumento + nivelInicial;
-		} else if (nivel.equalsIgnoreCase("sleepLevel")) {
-			return Game.sleepLevel >= Game.sleepAumento + nivelInicial;
-		} else if (nivel.equalsIgnoreCase("studyLevel")) {
-			return Game.studyLevel >= Game.studyAumento + nivelInicial;
-		} else if (nivel.equalsIgnoreCase("funLevel")) {
-			return Game.funLevel >= Game.funAumento + nivelInicial;
-		}
-		return false;
-	}
-
+	
 	/**
 	 * @return the timeFactor
 	 */
 	public static double getTimeFactor() {
 		return timeFactor;
-	}
-
-	public static boolean evaluarRates(String actividad) {
-		if (actividad.equalsIgnoreCase("dormir")) {
-			return Game.sleepLevel < 100;
-		}
-		if (actividad.equalsIgnoreCase("comer")) {
-			return Game.foodLevel < 100;
-		}
-		if (actividad.equalsIgnoreCase("estudiar")) {
-			return Game.studyLevel < 100;
-		}
-		if (actividad.equalsIgnoreCase("entretenerse")) {
-			return Game.funLevel < 100;
-		}
-		return false;
 	}
 
 	/**
@@ -250,51 +191,55 @@ public class Game {
 		Game.categories = categories;
 	}
 
-	// private static void crearHilo(String string) {
-	// resetearRates();
-	// if (Game.hilo != null) {
-	// // Game.hilo.stop();
-	// // Game.hilo.destroy();
-	// }
-	// Game.hilo = new Hilo(string);
-	// Game.hilo.start();
-	// }
-
 	private static void resetearRates() {
 		// TODO Auto-generated method stub
 		asignarRate("comer");
 		asignarRate("dormir");
-		asignarRate("entretenserse");
+		asignarRate("entretenerse");
 		asignarRate("estudiar");
 	}
 
 	public static void comer() {
-		if (Game.generator.nextDouble() < 0.5) {
+		resetearRates();
+//		if (Game.generator.nextDouble() < 0.5) {
 			Game.actividadActual = "comer";
 			Game.minutosActividad = 60;
-		}
+//		}else{
+//			Game.estado = "Excepcion al comer";
+//		}
 	}
 
 	public static void dormir() {
-		if (Game.generator.nextDouble() < 0.5) {
+		resetearRates();
+//		if (Game.generator.nextDouble() < 0.5) {
 			Game.actividadActual = "dormir";
-			Game.minutosActividad = 480;			
-		}
+			Game.minutosActividad = 480;	
+//		}else{
+//			Game.estado = "Excepcion al dormir";
+//		}
 	}
 
 	public static void entretenerse() {
-		if (Game.generator.nextDouble() < 0.5) {
+		resetearRates();
+//		if (Game.generator.nextDouble() < 0.5) {
 			Game.actividadActual = "entretenerse";
 			Game.minutosActividad = 120;
+			Game.asignarRatePositivo("entretenerse");
 			
-		}
+//		}else{
+//			Game.estado = "Excepcion al entretenerse";
+//		}
 	}
 
 	public static void estudiar() {
-		if (Game.generator.nextDouble() < 0.5) {
+		resetearRates();
+//		if (Game.generator.nextDouble() < 0.5) {
 			Game.actividadActual = "estudiar";
 			Game.minutosActividad = 360;	
-		}
+			Game.asignarRatePositivo("estudiar");
+//		}else{
+//			Game.estado = "Excepcion al estudiar";
+//		}
 	}
 
 	public static boolean esDia() {
@@ -306,17 +251,13 @@ public class Game {
 	}
 
 	private static void asignarRatePositivo(String actividad) {
-		if (actividad.equalsIgnoreCase("dormir")
-				&& Game.rateActualSleep != Game.rateAumentoSleep) {
+		if (actividad.equalsIgnoreCase("dormir")) {
 			Game.rateActualSleep = Game.rateAumentoSleep;
-		} else if (actividad.equalsIgnoreCase("comer")
-				&& Game.rateActualFood != Game.rateAumentoFood) {
+		} else if (actividad.equalsIgnoreCase("comer")) {
 			Game.rateActualFood = Game.rateAumentoFood;
-		} else if (actividad.equalsIgnoreCase("estudiar")
-				&& Game.rateActualStudy != Game.rateAumentoStudy) {
+		} else if (actividad.equalsIgnoreCase("estudiar")) {
 			Game.rateActualStudy = Game.rateAumentoStudy;
-		} else if (actividad.equalsIgnoreCase("entretenerse")
-				&& Game.rateActualFun != Game.rateAumentoFun) {
+		} else if (actividad.equalsIgnoreCase("entretenerse")) {
 			Game.rateActualFun = Game.rateAumentoFun;
 		}
 	}
@@ -352,46 +293,73 @@ public class Game {
 	public static void actualizar(int mins) {
 		cambiarValoresNecesidad(mins);
 		cambiarValoresTiempo(mins);
-		System.out.println("Comida: " + foodLevel + ", " + "Estudio: "
-				+ studyLevel + ", " + "Sleep: " + sleepLevel + ", " + "Fun: "
-				+ funLevel);
-		Game.asignarRatePositivo(Game.actividadActual);
+//		System.out.println("Comida: " + foodLevel + ", " + "Estudio: "
+//				+ studyLevel + ", " + "Sleep: " + sleepLevel + ", " + "Fun: "
+//				+ funLevel);
 		if (!Game.actividadActual.isEmpty()) {
 			Game.minutosActividad -= mins;
-			if (Game.minutosActividad <= 0) {
+			// Si ya se acabo el tiempo en que se iba a realizar la actividad o los niveles se llenan
+			if (Game.minutosActividad <= 0 || Game.foodLevel >= 100.0 || 
+				Game.studyLevel >= 100.0 || Game.funLevel >= 100.0 || Game.sleepLevel >= 100.0) {
 				Game.actividadActual = "";
 				resetearRates();
+			}else{
+				Game.asignarRatePositivo(Game.actividadActual);
 			}
 		}
-
+		Game.gameOver();
 	}
 
 	private static void cambiarValoresTiempo(int mins) {
-		Game.min += mins;
-		if ((Game.min % 60) == 0) {
-			Game.hour++;
-			if ((Game.hour % 24) == 0) {
-				Game.day++;
-				if ((Game.day % 7) == 0) {
-					Game.week++;
-					if ((Game.week % 13) == 0) {
-						Game.gameOver();
-					}
-				}
+		if(Game.min + mins > 60){
+			int horas = (Game.min + mins) / 60;
+			Game.min = (Game.min +  mins) % 60;
+			Game.min %= 60;
+			if(Game.hour + horas > 24){
+				Game.week += (Game.hour + horas) / 24;
+				Game.hour = ( Game.hour + horas) % 24;
+			}else{
+				Game.hour += horas;
 			}
+		}else{
+			Game.min += mins;
 		}
-
 	}
 
+	/** Verifica si el juego esta en un estado final y de estarlo coloca en 
+	 * la variable Game.estado "gano" o "perdio" segun sea el caso.
+	 * 
+	 */
 	private static void gameOver() {
-		Game.estado = "gano";
+		if(Game.week > 12){
+			Game.estado = "gano";
+		}else if(Game.foodLevel <= 0.0 || Game.studyLevel <= 0.0 ||
+				Game.funLevel <= 0.0 || Game.sleepLevel <= 0.0){
+			Game.estado = "perdio";
+		}
 	}
 
+	/** Aumenta los niveles de comida, diversion, sueno 
+	 * 
+	 * @param mins
+	 */
 	private static void cambiarValoresNecesidad(int mins) {
 		Game.foodLevel += (Game.rateActualFood * mins);
+		if(Game.foodLevel > 100.0){
+			Game.foodLevel = 100.0;
+		}
 		Game.funLevel += (Game.rateActualFun * mins);
+		if(Game.funLevel > 100.0){
+			Game.funLevel = 100.0;
+		}
 		Game.sleepLevel += (Game.rateActualSleep * mins);
+		if(Game.sleepLevel > 100.0){
+			Game.sleepLevel = 100.0;
+		}
 		Game.studyLevel += (Game.rateActualStudy * mins);
+		if(Game.studyLevel > 100.0){
+			Game.studyLevel = 100.0;
+		}
 	}
 
 	public static String evaluarEstado() {
@@ -400,6 +368,16 @@ public class Game {
 
 	public static void newGame() {
 		resetearRates();
+		Game.actividadActual = "";
+		Game.estado = "";
+		Game.week = 1;
+		Game.hour = 7;
+		Game.min = 0;
+		foodLevel = 30;
+		studyLevel = 50;
+		sleepLevel = 70;
+		funLevel = 90;
+		
 	}
 
 }

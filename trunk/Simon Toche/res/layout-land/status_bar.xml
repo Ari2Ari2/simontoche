@@ -76,7 +76,7 @@
         android:adjustViewBounds="true" 
         android:layout_gravity="top|center" 
         android:background="@android:color/transparent" 
-        android:src="@drawable/down_arrow" 
+        android:src="@drawable/up_arrow" 
         android:scaleType="fitXY" android:onClick="toggleTimeMapBar"/>
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -33,7 +33,7 @@ public class MainMenuActivity extends Activity {
 			while(true){
 				Game.actualizar(1);
 				try {
-					sleep(100);
+					sleep(500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
