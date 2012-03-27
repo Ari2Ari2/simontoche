@@ -384,7 +384,7 @@ public class Game {
 		Game.actividadActual = "";
 		Game.estado = "";
 		Game.week = 1;
-		Game.hour = 7;
+		Game.hour = 5;
 		Game.min = 0;
 		foodLevel = 15;
 		studyLevel = 50;

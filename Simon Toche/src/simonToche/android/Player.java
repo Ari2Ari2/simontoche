@@ -47,4 +47,29 @@ public class Player {
 		reproductor.stop();
 		reproductor = null;
 	}
+
+	public static void play(Context context, int id) {
+		// TODO Auto-generated method stub
+		
+		try {
+			AssetFileDescriptor afd = context.getResources().openRawResourceFd(id);
+			MediaPlayer mp = new MediaPlayer();
+			mp.reset();
+			mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(), afd.getDeclaredLength());
+
+			mp.prepare();
+			mp.setVolume(0.3f, 0.3f);
+			mp.start();
+			afd.close();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
