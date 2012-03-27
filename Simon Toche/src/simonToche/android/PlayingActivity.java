@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
@@ -58,6 +59,7 @@ public class PlayingActivity extends Activity {
 				TextView dia = (TextView) findViewById(R.id.dia);
 				TextView hora = (TextView) findViewById(R.id.hora);
 				WebView wv = (WebView) findViewById(R.id.central_emoticon);
+				wv.loadUrl("file:///android_res/drawable/feliz.gif");
 				eb.setProgress((int) Game.getFoodLevel());
 				fb.setProgress((int) Game.getFunLevel());
 				sb.setProgress((int)Game.getSleepLevel());
@@ -193,7 +195,27 @@ public class PlayingActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
+		WebView wv = (WebView) findViewById(R.id.central_emoticon);
+		String actividad = Game.getActividadActual();
+		cambiarEmoticon(wv, actividad);
 		startTransactionAnimation(true);
+		
+	}
+
+	private void cambiarEmoticon(WebView wv, String actividad) {
+		
+		if(actividad.equalsIgnoreCase("comer")){
+			wv.loadUrl("file:///android_res/drawable/comiendo.gif");
+		}else if (actividad.equalsIgnoreCase("dormir")){
+			wv.loadUrl("file:///android_res/drawable/durmiendo.gif");
+		}else if (actividad.equalsIgnoreCase("estudiar")){
+			wv.loadUrl("file:///android_res/drawable/estudiando.gif");
+		}else if (actividad.equalsIgnoreCase("entretenerse")){
+			wv.loadUrl("file:///android_res/drawable/divertido.gif");
+		}else{
+			wv.loadUrl("file:///android_res/drawable/feliz.gif");
+		}
 	}
 
 	/*

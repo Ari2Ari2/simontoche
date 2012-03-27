@@ -380,4 +380,9 @@ public class Game {
 		
 	}
 
+	public static String getActividadActual() {
+		System.out.println("Actividad Actual"+ Game.actividadActual);
+		return Game.actividadActual;
+	}
+
 }
