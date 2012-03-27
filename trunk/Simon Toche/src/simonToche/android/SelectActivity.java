@@ -14,6 +14,7 @@ import simonToche.logic.Place;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 
@@ -170,6 +171,11 @@ public class SelectActivity extends android.app.Activity {
 	private void contentUniversity(String tag) {
 		// TODO Auto-generated method stub
 		if (tag.equalsIgnoreCase("food")) {
+			View v = findViewById(R.layout.university_eat_select_activity_view);
+			TranslateAnimation trans = new TranslateAnimation(0f, 100f, 100f, 0f);
+			trans.setDuration(100);
+			v.startAnimation(trans);
+			trans.setFillAfter(true);
 			setContentView(R.layout.university_eat_select_activity_view);
 		}else if (tag.equalsIgnoreCase("studying")) {
 			setContentView(R.layout.university_study_select_activity_view);
