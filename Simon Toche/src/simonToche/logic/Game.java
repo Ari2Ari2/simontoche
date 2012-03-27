@@ -3,17 +3,17 @@
  */
 
 package simonToche.logic;
+
 import java.util.List;
 import java.util.Random;
 
 public class Game {
-	private static String estado = "" ;
+	private static String estado = "";
 	private static final int foodAumento = 0;
 	private static final int sleepAumento = 0;
 	private static final int studyAumento = 0;
 	private static final int funAumento = 0;
 	private static Random generator;
-	private static Hilo hilo;
 	private static double timeFactor = 80;
 	private static double foodLevel = 80;
 	private static double studyLevel = 80;
@@ -41,65 +41,49 @@ public class Game {
 	private static double rateNocheFun = -0.33333;
 	private static double rateAumentoFun = 0.83333;
 	private static double rateActualFun = 0;
+	private static String actividadActual = "";
+	private static int minutosActividad = 0;
 
-	private static class Hilo extends Thread {
-		public String actividad;
-
-		public Hilo(String actividad) {
-			this.actividad = actividad;
-		}
-
-		public void run() {
-			Game.asignarRatePositivo(this.actividad);
-			boolean nivelApropiado = false ;
-			double nivelInicial = Game.consultarNivel(this.actividad);
-			while (! nivelApropiado ) {
-				nivelApropiado = Game.consultarNivelApropiado(
-						consultarNivelNombre(this.actividad) , nivelInicial);
-			}
-			Game.asignarRate(actividad);
-		}
-	}
-
-	public static double consultarNivel(String actividad){
-		if(actividad.equalsIgnoreCase("comer")){
+	public static double consultarNivel(String actividad) {
+		if (actividad.equalsIgnoreCase("comer")) {
 			return Game.foodLevel;
-		} else if (actividad.equalsIgnoreCase("dormir")){
+		} else if (actividad.equalsIgnoreCase("dormir")) {
 			return Game.sleepLevel;
-		}else if(actividad.equalsIgnoreCase("estudiar")){
+		} else if (actividad.equalsIgnoreCase("estudiar")) {
 			return Game.studyLevel;
-		}else if(actividad.equalsIgnoreCase("entretenerse")){
+		} else if (actividad.equalsIgnoreCase("entretenerse")) {
 			return Game.funLevel;
 		}
 		return 0;
 	}
-	
-	public static String consultarNivelNombre(String actividad){
-		if(actividad.equalsIgnoreCase("comer")){
+
+	public static String consultarNivelNombre(String actividad) {
+		if (actividad.equalsIgnoreCase("comer")) {
 			return "foodLevel";
-		} else if (actividad.equalsIgnoreCase("dormir")){
+		} else if (actividad.equalsIgnoreCase("dormir")) {
 			return "sleepLevel";
-		}else if(actividad.equalsIgnoreCase("estudiar")){
+		} else if (actividad.equalsIgnoreCase("estudiar")) {
 			return "studyLevel";
-		}else if(actividad.equalsIgnoreCase("entretenerse")){
+		} else if (actividad.equalsIgnoreCase("entretenerse")) {
 			return "funLevel";
 		}
 		return "";
 	}
+
 	public static boolean consultarNivelApropiado(String nivel,
-			 double nivelInicial) {
-		if(nivel.equalsIgnoreCase("foodLevel")){
-			return Game.foodLevel >= Game.foodAumento + nivelInicial  ;
-		} else if (nivel.equalsIgnoreCase("sleepLevel")){
-			return Game.sleepLevel >= Game.sleepAumento + nivelInicial  ;
-		}else if(nivel.equalsIgnoreCase("studyLevel")){
-			return Game.studyLevel>= Game.studyAumento + nivelInicial  ;
-		}else if(nivel.equalsIgnoreCase("funLevel")){
-			return Game.funLevel >= Game.funAumento + nivelInicial  ;
+			double nivelInicial) {
+		if (nivel.equalsIgnoreCase("foodLevel")) {
+			return Game.foodLevel >= Game.foodAumento + nivelInicial;
+		} else if (nivel.equalsIgnoreCase("sleepLevel")) {
+			return Game.sleepLevel >= Game.sleepAumento + nivelInicial;
+		} else if (nivel.equalsIgnoreCase("studyLevel")) {
+			return Game.studyLevel >= Game.studyAumento + nivelInicial;
+		} else if (nivel.equalsIgnoreCase("funLevel")) {
+			return Game.funLevel >= Game.funAumento + nivelInicial;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @return the timeFactor
 	 */
@@ -266,15 +250,15 @@ public class Game {
 		Game.categories = categories;
 	}
 
-	private static void crearHilo(String string) {
-		resetearRates();
-		if (Game.hilo != null) {
-//			Game.hilo.stop();
-//			Game.hilo.destroy();
-		}
-		Game.hilo = new Hilo(string);
-		Game.hilo.start();
-	}
+	// private static void crearHilo(String string) {
+	// resetearRates();
+	// if (Game.hilo != null) {
+	// // Game.hilo.stop();
+	// // Game.hilo.destroy();
+	// }
+	// Game.hilo = new Hilo(string);
+	// Game.hilo.start();
+	// }
 
 	private static void resetearRates() {
 		// TODO Auto-generated method stub
@@ -285,42 +269,39 @@ public class Game {
 	}
 
 	public static void comer() {
-		if(Game.generator.nextDouble() < 0.5){
-		crearHilo("comer");
-		}else {
-		Game.estado = "comer";
+		if (Game.generator.nextDouble() < 0.5) {
+			Game.actividadActual = "comer";
+			Game.minutosActividad = 60;
 		}
 	}
 
 	public static void dormir() {
-		if(Game.generator.nextDouble() < 0.5){
-		crearHilo("dormir");
-		}else {
-		Game.estado = "dormir";
+		if (Game.generator.nextDouble() < 0.5) {
+			Game.actividadActual = "dormir";
+			Game.minutosActividad = 480;			
 		}
 	}
 
 	public static void entretenerse() {
-		if(Game.generator.nextDouble() < 0.5){
-		crearHilo("entretenerse");
-		}else {
-		Game.estado = "entretenerse";
+		if (Game.generator.nextDouble() < 0.5) {
+			Game.actividadActual = "entretenerse";
+			Game.minutosActividad = 120;
+			
 		}
 	}
 
 	public static void estudiar() {
-		if(Game.generator.nextDouble() < 0.5){
-		crearHilo("estudiar");
-		}else {
-		Game.estado = "estudiar";
+		if (Game.generator.nextDouble() < 0.5) {
+			Game.actividadActual = "estudiar";
+			Game.minutosActividad = 360;	
 		}
 	}
 
 	public static boolean esDia() {
 		return Game.hour < 19;
 	}
-	
-	public static int getMinutes(){
+
+	public static int getMinutes() {
 		return Game.min;
 	}
 
@@ -347,19 +328,19 @@ public class Game {
 			} else {
 				Game.rateActualSleep = Game.rateNocheSleep;
 			}
-		}else if (actividad.equalsIgnoreCase("comer")) {
+		} else if (actividad.equalsIgnoreCase("comer")) {
 			if (Game.esDia()) {
 				Game.rateActualFood = Game.rateDiaFood;
 			} else {
 				Game.rateActualFood = Game.rateNocheFood;
 			}
-		}else if (actividad.equalsIgnoreCase("estudiar")) {
+		} else if (actividad.equalsIgnoreCase("estudiar")) {
 			if (Game.esDia()) {
 				Game.rateActualStudy = Game.rateDiaStudy;
 			} else {
 				Game.rateActualStudy = Game.rateNocheStudy;
 			}
-		}else if (actividad.equalsIgnoreCase("entretenerse")) {
+		} else if (actividad.equalsIgnoreCase("entretenerse")) {
 			if (Game.esDia()) {
 				Game.rateActualFun = Game.rateDiaFun;
 			} else {
@@ -371,10 +352,18 @@ public class Game {
 	public static void actualizar(int mins) {
 		cambiarValoresNecesidad(mins);
 		cambiarValoresTiempo(mins);
-		System.out.println("Comida: " + foodLevel + ", " +
-				"Estudio: " + studyLevel + ", " +
-				"Sleep: " + sleepLevel + ", " +
-				"Fun: " + funLevel);
+		System.out.println("Comida: " + foodLevel + ", " + "Estudio: "
+				+ studyLevel + ", " + "Sleep: " + sleepLevel + ", " + "Fun: "
+				+ funLevel);
+		Game.asignarRatePositivo(Game.actividadActual);
+		if (!Game.actividadActual.isEmpty()) {
+			Game.minutosActividad -= mins;
+			if (Game.minutosActividad <= 0) {
+				Game.actividadActual = "";
+				resetearRates();
+			}
+		}
+
 	}
 
 	private static void cambiarValoresTiempo(int mins) {
@@ -408,8 +397,9 @@ public class Game {
 	public static String evaluarEstado() {
 		return Game.estado;
 	}
-	
-	public static void newGame(){
+
+	public static void newGame() {
 		resetearRates();
 	}
+
 }
