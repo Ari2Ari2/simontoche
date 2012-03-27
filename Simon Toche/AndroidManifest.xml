@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="8" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -56,6 +56,16 @@
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.SELECT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GameOverActivity"
+            android:label="@string/game_over_activity"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.GAMEOVER" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

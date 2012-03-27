@@ -11,5 +11,6 @@
     <string name="playing_activity"> Jugando Tamagotchi </string>
     <string name="select_activity"> Seleccionar opciones </string>
     <string name="continue_game">Continuar Trimestre</string>
+    <string name="game_over_activity">GAME OVER</string>
 
 </resources>
