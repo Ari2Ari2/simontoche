@@ -31,7 +31,10 @@ public class MainMenuActivity extends Activity {
 			// TODO Auto-generated method stub
 			super.run();
 			while(true){
-				Game.actualizar(1);
+				if(Game.actualizar(1)){
+					System.out.println("TERMINANDO THREAD");
+					break;
+				}
 				try {
 					sleep(500);
 				} catch (InterruptedException e) {
@@ -39,6 +42,7 @@ public class MainMenuActivity extends Activity {
 					e.printStackTrace();
 				}
 			}
+			System.out.println("Listo el pollo");
 		}		
 	};
 
@@ -122,12 +126,18 @@ public class MainMenuActivity extends Activity {
 	
 	public void nuevoJuego(View v){
 		Game.newGame();
-		actualizadorDelJuego.start();
+		if(!actualizadorDelJuego.isAlive()){
+			actualizadorDelJuego.start();
+		}
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
 		this.startActivity(in);
 	}
 	
 	public void continuar(View v){
+		Game.newGame();
+		if(!actualizadorDelJuego.isAlive()){
+			actualizadorDelJuego.start();
+		}
 		Intent in = new Intent(MainMenuActivity.this, MoveActivity.class);
 		this.startActivity(in);
 	}

@@ -35,11 +35,8 @@ import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -76,12 +73,20 @@ public class PlayingActivity extends Activity {
 					+ ":"
 					+ (Game.getMinutes() > 9 ? Game.getMinutes() : "0"
 							+ Game.getMinutes()));
+			System.out.println("Evaluando estado");
 			evaluarEstado();
-//			if(!actividadActual.equals(Game.getActividadActual())){
-//				actividadActual = Game.getActividadActual();
-//				cambiarEmoticon((WebView) findViewById(R.id.central_emoticon), actividadActual);
-//			}
-			handler.postDelayed(this, 500);
+
+			System.out.println("Estado evaluado");
+			if(!actividadActual.equals(Game.getActividadActual())){
+				actividadActual = Game.getActividadActual();
+				cambiarEmoticon((WebView) findViewById(R.id.central_emoticon), actividadActual);
+			}
+			if(Game.evaluarEstado().equals("gano") || Game.evaluarEstado().equals("perdio")){
+				
+			}else{
+				handler.postDelayed(this, 500);
+			}
+			
 		}
 
 		private void startBlinkAnimations(ProgressBar eb, ProgressBar fb,
@@ -123,27 +128,11 @@ public class PlayingActivity extends Activity {
 
 		private void evaluarEstado() {
 			String estado = Game.evaluarEstado();
-			if (estado.isEmpty()) {
+			if (estado.equals("")) {
 
-			} else if (estado.equals("gano")) {
-				System.out.println("Actualizando estado a gano");
-				setContentView(R.layout.gano_layout);
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				finish();
-			} else if (estado.equals("perdio")) {
-				System.out.println("Actualizando estado a perdio");
-				setContentView(R.layout.perdio_layout);
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			} else if (estado.equals("gano") || estado.equals("perdio")) {
+				Intent i = new Intent(PlayingActivity.this, GameOverActivity.class);
+				startActivity(i);
 				finish();
 			} else {
 				setMessage(estado);

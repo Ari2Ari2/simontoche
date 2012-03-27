@@ -296,13 +296,13 @@ public class Game {
 		}
 	}
 
-	public static void actualizar(int mins) {
+	public static boolean actualizar(int mins) {
 		cambiarValoresNecesidad(mins);
 		cambiarValoresTiempo(mins);
 		// System.out.println("Comida: " + foodLevel + ", " + "Estudio: "
 		// + studyLevel + ", " + "Sleep: " + sleepLevel + ", " + "Fun: "
 		// + funLevel);
-		if (!Game.actividadActual.isEmpty()) {
+		if (!Game.actividadActual.equals("")) {
 			Game.minutosActividad -= mins;
 			// Si ya se acabo el tiempo en que se iba a realizar la actividad o
 			// los niveles se llenan
@@ -315,7 +315,7 @@ public class Game {
 				Game.asignarRatePositivo(Game.actividadActual);
 			}
 		}
-		Game.gameOver();
+		return Game.gameOver();
 	}
 
 	private static void cambiarValoresTiempo(int mins) {
@@ -339,13 +339,16 @@ public class Game {
 	 * variable Game.estado "gano" o "perdio" segun sea el caso.
 	 * 
 	 */
-	private static void gameOver() {
+	private static boolean gameOver() {
 		if (Game.week > 12) {
 			Game.estado = "gano";
 		} else if (Game.foodLevel <= 0.0 || Game.studyLevel <= 0.0
 				|| Game.funLevel <= 0.0 || Game.sleepLevel <= 0.0) {
 			Game.estado = "perdio";
+		}else{
+			return false;
 		}
+		return true;
 	}
 
 	/**
@@ -383,7 +386,7 @@ public class Game {
 		Game.week = 1;
 		Game.hour = 7;
 		Game.min = 0;
-		foodLevel = 30;
+		foodLevel = 15;
 		studyLevel = 50;
 		sleepLevel = 70;
 		funLevel = 90;

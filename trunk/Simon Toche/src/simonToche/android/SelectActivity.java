@@ -20,14 +20,13 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
 public class SelectActivity extends android.app.Activity {
 
 	private static Category category;
 	private Handler handler;
-	private Animation blinker = AnimationUtils.loadAnimation(this, R.anim.blink);;
+	private Animation blinker;
 	String actividadActual;
 	private Runnable runnable = new Runnable() {
 		@Override
@@ -41,7 +40,7 @@ public class SelectActivity extends android.app.Activity {
 			fb.setProgress((int) Game.getFunLevel());
 			sb.setProgress((int) Game.getSleepLevel());
 			stb.setProgress((int) Game.getStudyLevel());
-			startBlinkAnimations(eb, fb, sb, stb);
+//			startBlinkAnimations(eb, fb, sb, stb);
 			
 //			if(!actividadActual.equals(Game.getActividadActual())){
 //				actividadActual = Game.getActividadActual();
@@ -106,11 +105,12 @@ public class SelectActivity extends android.app.Activity {
 			this.contentHome(tagAccion);
 		}else if (p.getBackground().equalsIgnoreCase("centro comercial")) {
 			this.contentMall(tagAccion);
-		}else if (p.getBackground().equalsIgnoreCase("universodad")) {
+		}else if (p.getBackground().equalsIgnoreCase("universidad")) {
 			this.contentUniversity(tagAccion);
 		}		
-//		startTransitionAnimation(true);
+		startTransitionAnimation(true);
 		ImageButton button = (ImageButton)findViewById(R.id.middle_button);
+		blinker = AnimationUtils.loadAnimation(this, R.anim.blink);
 		handler = new Handler();
 		handler.post(runnable);
 	}
