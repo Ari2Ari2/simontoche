@@ -171,7 +171,7 @@ public class SelectActivity extends android.app.Activity {
 	private void contentUniversity(String tag) {
 		// TODO Auto-generated method stub
 		if (tag.equalsIgnoreCase("food")) {
-			View v = findViewById(R.layout.university_eat_select_activity_view);
+			View v = findViewById(R.id.sfu);
 			TranslateAnimation trans = new TranslateAnimation(0f, 100f, 100f, 0f);
 			trans.setDuration(100);
 			v.startAnimation(trans);
