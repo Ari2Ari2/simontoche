@@ -9,16 +9,19 @@ import android.media.MediaPlayer;
 public class Player {
 
 	private static MediaPlayer reproductor = new MediaPlayer();
-	private final static int file = R.raw.songotchi;
-
-	public Player(Context context) {
-		AssetFileDescriptor afd = context.getResources().openRawResourceFd(Player.file);
-		reproductor.reset();
+	
+	public static void create(Context c){
 		try {
-			reproductor.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getDeclaredLength());
+			AssetFileDescriptor afd = c.getResources().openRawResourceFd(R.raw.songotchi);
+			reproductor.reset();
+			reproductor.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(), afd.getDeclaredLength());
 			reproductor.prepare();
-	        afd.close();
+			afd.close();
+//			System.out.println("Data source asignado");
 		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
@@ -30,7 +33,18 @@ public class Player {
 		}
 	}
 
-	public void play(){
+	public static void play(){
 		reproductor.start();
+//		reproductor.setLooping(true);
+	}
+	
+	
+	public static void pause(){
+		reproductor.pause();
+	}
+	
+	public static void destroy(){
+		reproductor.stop();
+		reproductor = null;
 	}
 }

@@ -49,6 +49,7 @@ public class MainMenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		Player.create(this);
 		tv = new TextView(this);
 		tv.setText("EN EL MAIN MENU");
 		setContentView(simonToche.android.R.layout.main_menu);
@@ -61,6 +62,8 @@ public class MainMenuActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+		Player.play();
+		
 	}
 	
 	/* (non-Javadoc)
@@ -70,8 +73,8 @@ public class MainMenuActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		Player p = new Player(this);
-		p.play();
+		
+		Player.play();
 	}
 
 	/* Va a onResume() si el usuario regresa a la actividad
@@ -83,6 +86,7 @@ public class MainMenuActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		Player.pause();
 	}
 	
 	/* Va a onRestart() si el usuario navega hasta
@@ -95,6 +99,7 @@ public class MainMenuActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
+		Player.pause();
 	}
 	
 	/* (non-Javadoc)
@@ -104,6 +109,7 @@ public class MainMenuActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		Player.destroy();
 	}
 
 	/* Viene de onStop() y va a onStart()

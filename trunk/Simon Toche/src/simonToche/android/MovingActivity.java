@@ -6,11 +6,10 @@
  */
 package simonToche.android;
 
-import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +17,8 @@ import android.view.View;
 public class MovingActivity extends Activity {
 
 	Intent intent;
+	String tag;
+	Timer timeoutTimer;
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -28,14 +29,20 @@ public class MovingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		Bundle bundle = getIntent().getExtras();
-		String tag = "";
+		tag = "";
 		if(bundle != null){
 			tag = bundle.getString("tag");
 		}
-		intent = new Intent(MovingActivity.this, PlayingActivity.class);
-		intent.putExtra("tag", tag);
-		startActivity(intent);
-		
+		setContentView(R.layout.moving_activity_view);
+		timeoutTimer = new Timer();
+        TimerTask timeoutTask = new TimerTask() {
+            @Override
+            public void run() {
+                finish();
+            }
+        };
+        timeoutTimer.schedule(timeoutTask, 5000);
+        
 	}
 
 	/* (non-Javadoc)
@@ -45,7 +52,9 @@ public class MovingActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		setContentView(R.layout.moving_activity_view);
+		
+		
+		
 	}
 	
 	/* (non-Javadoc)
@@ -87,6 +96,9 @@ public class MovingActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		intent = new Intent(MovingActivity.this, PlayingActivity.class);
+		intent.putExtra("tag", tag);
+		startActivity(intent);
 	}
 
 	/* Viene de onStop() y va a onStart()

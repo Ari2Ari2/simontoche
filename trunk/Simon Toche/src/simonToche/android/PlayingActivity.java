@@ -58,8 +58,7 @@ public class PlayingActivity extends Activity {
 				TextView sem = (TextView) findViewById(R.id.semana);
 				TextView dia = (TextView) findViewById(R.id.dia);
 				TextView hora = (TextView) findViewById(R.id.hora);
-				WebView wv = (WebView) findViewById(R.id.central_emoticon);
-				wv.loadUrl("file:///android_res/drawable/feliz.gif");
+				
 				eb.setProgress((int) Game.getFoodLevel());
 				fb.setProgress((int) Game.getFunLevel());
 				sb.setProgress((int)Game.getSleepLevel());
@@ -139,7 +138,7 @@ public class PlayingActivity extends Activity {
 			}else{
 				System.out.println("Actualizando estado");
 				TextView tv = (TextView)findViewById(R.id.main_message);
-				tv.setText(estado);
+				setMessage(estado);
 			}
 		}
 	};
@@ -194,8 +193,7 @@ public class PlayingActivity extends Activity {
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		super.onResume();
-		
+		super.onResume();		
 		WebView wv = (WebView) findViewById(R.id.central_emoticon);
 		String actividad = Game.getActividadActual();
 		cambiarEmoticon(wv, actividad);
@@ -203,11 +201,13 @@ public class PlayingActivity extends Activity {
 		
 	}
 
-	private void cambiarEmoticon(WebView wv, String actividad) {
-		
+	private void cambiarEmoticon(WebView wv, String actividad) {	
+		System.out.println("Cambiando emoticon a " + actividad);
+		wv.invalidate();
 		if(actividad.equalsIgnoreCase("comer")){
 			wv.loadUrl("file:///android_res/drawable/comiendo.gif");
 		}else if (actividad.equalsIgnoreCase("dormir")){
+			System.out.println("Loading durmiendo.gif");
 			wv.loadUrl("file:///android_res/drawable/durmiendo.gif");
 		}else if (actividad.equalsIgnoreCase("estudiar")){
 			wv.loadUrl("file:///android_res/drawable/estudiando.gif");
@@ -271,6 +271,13 @@ public class PlayingActivity extends Activity {
 				Game.getPlace().getBackground(), "drawable", getPackageName());
 		v.setBackgroundResource(resID);
 	}
+	
+	public void setMessage(String msg){
+		TextView tv = (TextView) findViewById(R.id.main_message);
+		tv.setText(msg);
+		Animation a = AnimationUtils.loadAnimation(this, R.anim.desvanecer);
+		tv.startAnimation(a);
+	}
 
 	public void elegirAccion(View v) {
 		String tag = (String) v.getTag();
@@ -280,11 +287,10 @@ public class PlayingActivity extends Activity {
 			if(findViewById(R.id.time_map_bar).getVisibility() == View.VISIBLE){
 				toggleTimeMapBar(findViewById(R.id.middle_button));
 			}
-			TextView tv = (TextView) findViewById(R.id.main_message);
 			if(tag.equals("sleeping")){
-				tv.setText("No vine a un centro comercial a dormir");
+				setMessage("No vine a un centro comercial a dormir");
 			}else{
-				tv.setText("¿Estudiar en un centro comercial?\nClaro...");
+				setMessage("¿Estudiar en un centro comercial?\nClaro...");
 			}
 		}else{
 			startTransactionAnimation(false);

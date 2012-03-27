@@ -35,7 +35,6 @@ public class SelectActivity extends android.app.Activity {
 		Bundle params = getIntent().getExtras();
 		Place p = (Place) getIntent().getSerializableExtra("Place");
 		String tagAccion = params.getString("tag");
-		String background = p.getBackground();
 		if (p.getBackground().equalsIgnoreCase("home")) {
 			this.contentHome(tagAccion);
 		}else if (p.getBackground().equalsIgnoreCase("mall")) {
@@ -43,10 +42,8 @@ public class SelectActivity extends android.app.Activity {
 		}else if (p.getBackground().equalsIgnoreCase("university")) {
 			this.contentUniversity(tagAccion);
 		}		
+//		startTransitionAnimation(true);
 		ImageButton button = (ImageButton)findViewById(R.id.middle_button);
-		View bar = findViewById(R.id.time_map_bar);
-		button.setImageResource(R.drawable.up_arrow);
-		bar.setVisibility(View.INVISIBLE);
 	}
 
 	/*
@@ -58,8 +55,6 @@ public class SelectActivity extends android.app.Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		((ImageButton)findViewById(R.id.middle_button)).setImageResource(R.drawable.up_arrow);
-		findViewById(R.id.time_map_bar).setVisibility(View.INVISIBLE);
 	}
 
 	/*
@@ -71,6 +66,8 @@ public class SelectActivity extends android.app.Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		((ImageButton)findViewById(R.id.middle_button)).setImageResource(R.drawable.up_arrow);
+		findViewById(R.id.time_map_bar).setVisibility(View.INVISIBLE);
 		startTransitionAnimation(true);
 	}
 
@@ -178,12 +175,15 @@ public class SelectActivity extends android.app.Activity {
 	}
 
 	private void contentUniversity(String tag) {
-		 setContentView(R.layout.university_eat_select_activity_view);
-		 View v = findViewById(R.id.sfu);
-		TranslateAnimation trans = new TranslateAnimation(0f, 0f, 1000f, 0f);
-		trans.setDuration(1500);
-		trans.setFillAfter(true);
-		v.startAnimation(trans);
+		if (tag.equalsIgnoreCase("food")) {
+			setContentView(R.layout.university_eat_select_activity_view);
+		}else if (tag.equalsIgnoreCase("studying")) {
+			setContentView(R.layout.university_study_select_activity_view);
+		}else if (tag.equalsIgnoreCase("sleeping")) {
+			setContentView(R.layout.university_sleep_select_activity_view);
+		}else if (tag.equalsIgnoreCase("fun")) {
+			setContentView(R.layout.university_fun_select_activity_view);
+		}
 	}
 
 	private void contentMall(String tag) {
@@ -217,13 +217,9 @@ public class SelectActivity extends android.app.Activity {
 	public void startTransitionAnimation(boolean entrada){
 		View v = findViewById(R.id.sfu);
 		TranslateAnimation trans = new TranslateAnimation(0f, 0f, (entrada ? 1000f : 0f), (entrada ? 0f :1000f));
-		ScaleAnimation sanim = new ScaleAnimation(0, 1, 0, 1);
-		sanim.setDuration(100);
-		sanim.setFillAfter(true);
 		trans.setDuration(1500);
 		trans.setFillAfter(true);
-		findViewById(R.id.time_map_bar).startAnimation(sanim);
-//		v.startAnimation(trans);
+		v.startAnimation(trans);
 		
 	}
 
