@@ -8,7 +8,7 @@ import android.media.MediaPlayer;
 
 public class Player {
 
-	private static MediaPlayer reproductor;
+	private static MediaPlayer reproductor = new MediaPlayer();
 	private final static int file = R.raw.songotchi;
 
 	public Player(Context context) {
