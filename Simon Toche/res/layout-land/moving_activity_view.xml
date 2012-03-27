@@ -2,15 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/traffic"
     android:orientation="vertical" >
-
-    <include layout="@layout/status_bar" />
-    
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aqui va una imagen de trafico y la actividad debe 
-        acabar automaticamente luego de cierto tiempo" />
 
 </LinearLayout>
