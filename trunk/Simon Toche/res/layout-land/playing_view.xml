@@ -5,7 +5,7 @@
     android:layout_marginRight="30dp"
     android:layout_marginTop="50dp"
     android:orientation="vertical"
-    android:weightSum="2" android:id="@+id/sfu">
+    android:weightSum="2" android:id="@+id/sfu" android:scrollbars="none" android:gravity="center_vertical|center_horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,6 @@
             android:id="@+id/main_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" android:textSize="30dp" android:gravity="center_vertical|center_horizontal" 
             android:textColor="#FF0000" android:maxLines="2"/>
 
@@ -35,7 +34,7 @@
         android:onClick="elegirAccion"
         android:orientation="horizontal"
         android:tag="fun"
-        android:weightSum="5" >
+        android:weightSum="5" android:background="#00000000">
 
         <ImageButton
             android:id="@+id/button7"
@@ -67,7 +66,11 @@
             android:id="@+id/central_emoticon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1" android:clickable="false" 
+            android:isScrollContainer="false" 
+            android:longClickable="false" 
+            android:saveEnabled="false" 
+            android:background="#00000000"/>
 
 
         <ImageButton
