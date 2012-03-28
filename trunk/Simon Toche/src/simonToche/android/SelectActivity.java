@@ -230,21 +230,25 @@ public class SelectActivity extends android.app.Activity {
 
 	public void elegirEstudiar(View v) {
 		Game.estudiar();
+		Player.play(this, R.raw.studying, 1.2f, 1.2f);
 		this.finish();
 	}
 
 	public void elegirDormir(View v) {
 		Game.dormir();
+		Player.play(this, R.raw.sleeping, 1f, 1f);
 		this.finish();
 	}
 
 	public void elegirDiversion(View v) {
 		Game.entretenerse();
+		Player.play(this, R.raw.havingfun, 1f, 1f);
 		this.finish();
 	}
 
 	public void elegirComer(View v) {
 		Game.comer();
+		Player.play(this, R.raw.eating, 1.2f, 1.2f);
 		this.finish();
 	}
 

@@ -22,13 +22,13 @@ public class Game {
 	private static int min = 1;
 	private static Place place;
 	private static List<Category> categories;
-	private static double rateDiaFood = -0.139;
-	private static double rateNocheFood = -0.092;
-	private static double rateAumentoFood = 1.6;
+	private static double rateDiaFood = -0.277;
+	private static double rateNocheFood = -0.166;
+	private static double rateAumentoFood = 1.2;
 	private static double rateActualFood = 0;
-	private static double rateDiaStudy = -0.0347;
-	private static double rateNocheStudy = -0.0231;
-	private static double rateAumentoStudy = 0.27;
+	private static double rateDiaStudy = -0.04;
+	private static double rateNocheStudy = -0.03;
+	private static double rateAumentoStudy = 0.3;
 	private static double rateActualStudy = 0;
 	private static double rateDiaSleep = -0.104;
 	private static double rateNocheSleep = -0.27;
@@ -36,7 +36,7 @@ public class Game {
 	private static double rateActualSleep = 0;
 	private static double rateDiaFun = -0.2777;
 	private static double rateNocheFun = -0.33333;
-	private static double rateAumentoFun = 0.83333;
+	private static double rateAumentoFun = 0.36666;
 	private static double rateActualFun = 0;
 	private static String actividadActual = "";
 	private static int minutosActividad = 0;
@@ -322,7 +322,6 @@ public class Game {
 		if (Game.min + mins > 60) {
 			int horas = (Game.min + mins) / 60;
 			Game.min = (Game.min + mins) % 60;
-			Game.min %= 60;
 			if (Game.hour + horas > 24) {
 				Game.week += (Game.hour + horas) / 24;
 				Game.hour = (Game.hour + horas) % 24;
@@ -386,10 +385,10 @@ public class Game {
 		Game.week = 1;
 		Game.hour = 5;
 		Game.min = 0;
-		foodLevel = 15;
-		studyLevel = 50;
-		sleepLevel = 70;
-		funLevel = 90;
+		foodLevel = 40;
+		studyLevel = 90;
+		sleepLevel = 100;
+		funLevel = 80;
 
 	}
 
