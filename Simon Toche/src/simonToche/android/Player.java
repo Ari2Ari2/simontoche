@@ -48,7 +48,7 @@ public class Player {
 		reproductor = null;
 	}
 
-	public static void play(Context context, int id) {
+	public static void play(Context context, int id, float vol1, float vol2) {
 		// TODO Auto-generated method stub
 		
 		try {
@@ -58,7 +58,7 @@ public class Player {
 			mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(), afd.getDeclaredLength());
 
 			mp.prepare();
-			mp.setVolume(0.3f, 0.3f);
+			mp.setVolume(vol1, vol2);
 			mp.start();
 			afd.close();
 		} catch (IllegalArgumentException e) {

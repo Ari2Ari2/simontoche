@@ -76,7 +76,7 @@ public class PlayingActivity extends Activity {
 					+ (Game.getMinutes() > 9 ? Game.getMinutes() : "0"
 							+ Game.getMinutes()));
 			if(Game.getHour() == 6 && Game.getMinutes() <= 5){
-				Player.play(context, R.raw.inthemorning);
+				Player.play(context, R.raw.inthemorning,1f,1f);
 			}
 			System.out.println("Evaluando estado");
 			evaluarEstado();
