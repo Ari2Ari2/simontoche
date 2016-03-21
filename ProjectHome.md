@@ -1,0 +1,1 @@
+El proyecto consiste en desarrollar una aplicación en Android. La aplicación es un tamagotchi de un estudiante de la USB que lucha por pasar el trimestre sin morirse de hambre, aburrimiento o sueño.
